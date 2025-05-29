@@ -12,6 +12,8 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
     wofi
+    dolphin
+    swww
     neovim
     git
     wget
