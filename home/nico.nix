@@ -9,6 +9,8 @@
   # Let Home Manager install and manage these apps:
   home.packages = with pkgs; [
     wezterm
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
     neovim
     git
     wget
@@ -18,10 +20,10 @@
   ];
 
   # Link config files from your repo
-  xdg.configFile."hypr/hyprland.conf".source = ../dotfiles/hyprland/hyprland.conf;
-  xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
+  # xdg.configFile."hypr/hyprland.conf".source = ../dotfiles/hyprland/hyprland.conf;
+  # xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
   xdg.configFile."wezterm/wezterm.lua".source = ../dotfiles/wezterm/wezterm.lua;
-  xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
+  # xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
 
   # GTK + Theme settings (Nord/dark)
   gtk = {
