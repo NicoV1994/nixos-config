@@ -21,7 +21,7 @@
 
   # Link config files from your repo
   # xdg.configFile."hypr/hyprland.conf".source = ../dotfiles/hyprland/hyprland.conf;
-  # xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
+  xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
   xdg.configFile."wezterm/wezterm.lua".source = ../dotfiles/wezterm/wezterm.lua;
   # xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
 
