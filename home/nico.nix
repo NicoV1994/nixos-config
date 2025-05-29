@@ -11,10 +11,12 @@
     wezterm
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
+    wofi
     neovim
     git
     wget
     bitwarden
+    brave
     firefox
     teams-for-linux
   ];
