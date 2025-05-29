@@ -12,7 +12,7 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
     wofi
-    dolphin
+    kdePackages.dolphin
     swww
     neovim
     git
