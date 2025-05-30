@@ -11,9 +11,11 @@
     wezterm
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
+    vanilla-dmz
     wofi
     kdePackages.dolphin
     swww
+    gtklock
     neovim
     git
     wget
@@ -21,6 +23,8 @@
     brave
     firefox
     teams-for-linux
+    vscode-fhs
+    dbeaver-bin
   ];
 
   # Link config files from your repo
@@ -41,8 +45,8 @@
       package = pkgs.papirus-icon-theme;
     };
     cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
+      name = "DMZ-White";
+      package = pkgs.vanilla-dmz;
     };
   };
 
@@ -54,6 +58,17 @@
     MOZ_ENABLE_WAYLAND = "1";
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
+    XCURSOR_THEME = "DMZ-White";
+    XCURSOR_SIZE = "24";
+  };
+
+  programs.bash = {
+    enable = true;
+    profileExtra = ''
+      if [ "$(tty)" = "/dev/tty1" ]; then
+        exec Hyprland
+      fi
+    '';
   };
 
   home.stateVersion = "24.11";
