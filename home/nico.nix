@@ -15,18 +15,21 @@
     cmake
 
     # system
+    ghostty
     wezterm
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
-    vanilla-dmz
-    wofi
-    kdePackages.dolphin
-    swww
-    gtklock
+    nerd-fonts.jetbrains-mono #wezterm waybar
+    nerd-fonts.fira-code #wezterm
+    vanilla-dmz #cursor
+    wofi #d-menu
+    kdePackages.dolphin #file explorere
+    swww #background image
+    gtklock #lockscreen
+    wl-clipboard #clipboard
 
-    # nvim
+    # terminal tools
+    tmux
     neovim
-    ripgrep
+    ripgrep #for fuzzy finding (leader s g)
     unzip
 
     # tools
@@ -45,6 +48,8 @@
   xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
   xdg.configFile."wezterm/wezterm.lua".source = ../dotfiles/wezterm/wezterm.lua;
   xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
+  xdg.configFile."ghostty/config".source = ../dotfiles/ghostty/config;
+  home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;
 
   # GTK + Theme settings (Nord/dark)
   gtk = {

@@ -5,7 +5,7 @@ This repository contains my personal NixOS system configuration using:
 * **Nix flakes** for reproducible and modular builds
 * **Home Manager**or user-level dotfiles and packages
 * **Hyprland** for Wayland desktop experience
-* Custom dotfiles for `wezterm`, `waybar`, `nvim` (WIP), etc.
+* Custom dotfiles for `waybar`, `nvim` (WIP), etc.
 
 ---
 
@@ -67,7 +67,6 @@ sudo nixos-rebuild switch --flake ~/nixos-config#nixos
 | `flakes`                              | Reproducible config management      |
 | `home-manager`                        | User-level packages and dotfiles    |
 | `Hyprland`                            | Wayland window manager              |
-| `wezterm`                             | GPU-accelerated terminal            |
 | `waybar`                              | Customizable Wayland status bar     |
 | `bitwarden`, `firefox`, `brave`, etc. | Daily tools installed declaratively |
 
@@ -86,3 +85,9 @@ nixos-config/
 ├── dotfiles/                   # Dotfiles for Hyprland, Waybar, etc.
 └── README.md
 ```
+
+# TODO List
+- wofi browser search
+- switch swww to hyprpaper
+- make waybar look nice + tools VPN, WLAN, ...
+
