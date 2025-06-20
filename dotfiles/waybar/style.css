@@ -1,44 +1,119 @@
+/* Tokyo Night - Official VSCode Theme Colors (Night variant)
+
+Primary UI roles:
+  Red        (#f7768e) → alerts, power, battery warning
+  Orange     (#ff9e64) → booleans, constants (used for CPU)
+  Yellow     (#e0af68) → parameters, backlight
+  LightGray  (#cfc9c2) → subtle text / background alt
+  Green      (#9ece6a) → battery, workspaces active
+  Mint       (#73daca) → charging battery
+  Aqua       (#b4f9f8) → memory
+  Cyan       (#2ac3de) → network
+  LightCyan  (#7dcfff) → music, hover
+  Blue       (#7aa2f7) → function, clock
+  Magenta    (#bb9af7) → pulseaudio
+  Foreground (#c0caf5) → default text
+  DimFg      (#a9b1d6) → less important text
+  MarkdownFg (#9aa5ce) → unstyled text
+  Comment    (#565f89) → separator lines
+  Black      (#414868) → deep background
+  StormBg    (#24283b) → light BG alt
+  NightBg    (#1a1b26) → base BG
+*/
+
 * {
-  font-family: "JetBrainsMono Nerd Font", sans-serif;
-  font-size: 13px;
-  border: none;
-  border-radius: 8px;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 18px;
   min-height: 0;
+  padding-right: 2px;
+  padding-left: 2px;
+  padding-bottom: 0px;
 }
 
-window#waybar {
-  background: #1a1b26; /* Tokyonight background */
-  color: #c0caf5;
-  padding: 6px 10px;
-  border-bottom: 2px solid #7aa2f7;
+#waybar {
+  background: transparent;
+  color: #c0caf5; /* Foreground */
+  margin: 2px 2px;
+  border-top: 2px solid #565f89; /* comment color as top border line */
 }
 
-/* Module background styling */
+#workspaces {
+  border-radius: 5px;
+  margin: 5px;
+  background: #1a1b26; /* Night background */
+  margin-left: 1rem;
+}
+
+#workspaces button {
+  color: #7dcfff; /* light cyan */
+  border-radius: 5px;
+  padding: 0.4rem;
+}
+
+#workspaces button.active {
+  color: #9ece6a; /* green */
+  background: #24283b; /* storm bg */
+  border-radius: 5px;
+}
+
+#workspaces button:hover {
+  color: #ff9e64; /* orange */
+  border-radius: 5px;
+}
+
+#custom-music,
+#tray,
 #clock,
 #battery,
-#pulseaudio {
-  margin: 0 8px;
-  padding: 4px 10px;
-  background-color: #24283b;
-  color: #c0caf5;
-  transition: background 0.3s ease;
+#pulseaudio,
+#network,
+#cpu,
+#memory {
+  background-color: #1a1b26;
+  padding: 0.5rem 1rem;
+  margin: 5px 3px;
+  border-radius: 5px;
+  color: #a9b1d6; /* dim fg */
 }
 
-/* Module hover effect */
-#clock:hover,
-#battery:hover,
-#pulseaudio:hover {
-  background-color: #3b4261;
-}
-
-/* Specific colors */
 #clock {
-  color: #e0af68;
+  color: #7aa2f7; /* blue */
+  margin-right: 1rem;
 }
+
 #battery {
-  color: #9ece6a;
+  color: #9ece6a; /* green */
 }
+
+#battery.charging {
+  color: #73daca; /* mint green */
+}
+
+#battery.warning:not(.charging) {
+  color: #f7768e; /* red */
+}
+
+#backlight {
+  color: #e0af68; /* yellow */
+}
+
 #pulseaudio {
-  color: #f7768e;
+  color: #bb9af7; /* magenta */
+  margin-left: 1rem;
 }
-  
+
+#cpu {
+  color: #ff9e64; /* orange */
+}
+
+#memory {
+  color: #b4f9f8; /* aqua */
+}
+
+#network {
+  color: #2ac3de; /* cyan */
+}
+
+#custom-music {
+  color: #7dcfff; /* light cyan */
+}

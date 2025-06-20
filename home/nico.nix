@@ -41,11 +41,16 @@
     teams-for-linux
     vscode-fhs
     dbeaver-bin
+
+    # Qt theming tools
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
   ];
 
   # Link config files from your repo
   xdg.configFile."hypr/hyprland.conf".source = ../dotfiles/hyprland/hyprland.conf;
   xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
+  xdg.configFile."waybar/style.css".source = ../dotfiles/waybar/style.css;
   xdg.configFile."wezterm/wezterm.lua".source = ../dotfiles/wezterm/wezterm.lua;
   xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
   xdg.configFile."ghostty/config".source = ../dotfiles/ghostty/config;
@@ -66,6 +71,20 @@
       name = "DMZ-White";
       package = pkgs.vanilla-dmz;
     };
+  };
+
+  # GTK4 apps also respect dark mode:
+  xdg.configFile."gtk-4.0/settings.ini".text = ''
+    [Settings]
+    gtk-theme-name=Nordic
+    gtk-application-prefer-dark-theme=1
+  '';
+
+  # Qt config (enables qt5ct + kvantum for dark)
+  qt = {
+    enable = true;
+    platformTheme.name = "qt5ct";
+    style.name = "kvantum";
   };
 
   # Enable Waybar support (with modules defined in your dotfiles)
