@@ -34,7 +34,6 @@ Primary UI roles:
   background: transparent;
   color: #c0caf5; /* Foreground */
   margin: 2px 2px;
-  border-top: 2px solid #565f89; /* comment color as top border line */
 }
 
 #workspaces {

@@ -21,10 +21,11 @@
     nerd-fonts.fira-code #wezterm
     vanilla-dmz #cursor
     wofi #d-menu
-    kdePackages.dolphin #file explorere
-    swww #background image
+    xfce.thunar #file explorere
+    hyprpaper #background image
     gtklock #lockscreen
-    wl-clipboard #clipboard
+    wl-clipboard #clipboar
+    tokyonight-gtk-theme #theme
 
     # terminal tools
     tmux
@@ -56,12 +57,18 @@
   xdg.configFile."ghostty/config".source = ../dotfiles/ghostty/config;
   home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;
 
+  xdg.configFile."hypr/hyprpaper.conf".text = ''
+    preload = ~/nixos-config/assets/wallpapers/pawel-czerwinski.jpg
+    wallpaper = eDP-1,~/nixos-config/assets/wallpapers/pawel-czerwinski.jpg
+    ipc = off
+  '';
+
   # GTK + Theme settings (Nord/dark)
   gtk = {
     enable = true;
     theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
     };
     iconTheme = {
       name = "Papirus-Dark";
@@ -76,7 +83,7 @@
   # GTK4 apps also respect dark mode:
   xdg.configFile."gtk-4.0/settings.ini".text = ''
     [Settings]
-    gtk-theme-name=Nordic
+    gtk-theme-name=Tokyonight-Dark
     gtk-application-prefer-dark-theme=1
   '';
 
