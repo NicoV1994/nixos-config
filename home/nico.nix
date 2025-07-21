@@ -8,6 +8,9 @@
 
   # Let Home Manager install and manage these apps:
   home.packages = with pkgs; [
+    direnv #for automatic context switching with nixos
+    nix-direnv #for nix to understand direnv
+
     # c compiler
     gcc
     gnumake
@@ -17,6 +20,7 @@
     # system
     ghostty
     wezterm
+    fastfetch
     nerd-fonts.jetbrains-mono #wezterm waybar
     nerd-fonts.fira-code #wezterm
     vanilla-dmz #cursor
@@ -24,7 +28,7 @@
     xfce.thunar #file explorere
     hyprpaper #background image
     gtklock #lockscreen
-    wl-clipboard #clipboar
+    wl-clipboard #clipboard
     tokyonight-gtk-theme #theme
 
     # terminal tools
@@ -35,6 +39,7 @@
 
     # tools
     git
+    gh
     wget
     bitwarden
     brave
@@ -112,6 +117,11 @@
       if [ "$(tty)" = "/dev/tty1" ]; then
         exec Hyprland
       fi
+    '';
+    initExtra = ''
+    if [ "$TERM_PROGRAM" = "ghostty" ]; then
+      fastfetch
+    fi
     '';
   };
 

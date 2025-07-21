@@ -11,7 +11,6 @@
     "battery",
     "network",
     "clock",
-    "custom/lock"
   ],
   "hyprland/workspaces": {
     "format": "{name}: {icon}",
@@ -23,7 +22,12 @@
   "clock": {
     "timezone": "Europe/Vienna",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "{:%d - %H:%M}"
+    "format": "KW {:%V - %d.%m.%Y - %H:%M}"
+  },
+  "battery": {
+    "format": "  {capacity}%",
+    "format-charging": " {capacity}%",
+    "tooltip": false
   },
   "network": {
     "format-wifi": "󰤢 ",
