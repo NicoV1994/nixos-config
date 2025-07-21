@@ -40,6 +40,7 @@
     # tools
     git
     gh
+    lazygit
     wget
     bitwarden
     brave
