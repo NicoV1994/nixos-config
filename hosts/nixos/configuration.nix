@@ -42,11 +42,14 @@
   # Enable unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Container runtime
+  virtualisation.docker.enable = true;
+
   # Your user (Home Manager will manage packages)
   users.users.nico = {
     isNormalUser = true;
     description = "Nico";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   security.pam.services.gtklock = {

@@ -35,6 +35,7 @@
     ripgrep #for fuzzy finding (leader s g)
     codex #OpenAI coding agent CLI
     unzip
+    nodejs_22
 
     # tools
     git
