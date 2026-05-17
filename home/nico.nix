@@ -19,13 +19,11 @@
 
     # system
     ghostty
-    wezterm
     fastfetch
-    nerd-fonts.jetbrains-mono #wezterm waybar
-    nerd-fonts.fira-code #wezterm
+    nerd-fonts.jetbrains-mono #waybar
     vanilla-dmz #cursor
     wofi #d-menu
-    xfce.thunar #file explorere
+    thunar #file explorere
     hyprpaper #background image
     gtklock #lockscreen
     wl-clipboard #clipboard
@@ -35,6 +33,7 @@
     tmux
     neovim
     ripgrep #for fuzzy finding (leader s g)
+    codex #OpenAI coding agent CLI
     unzip
 
     # tools
@@ -42,7 +41,7 @@
     gh
     lazygit
     wget
-    bitwarden
+    bitwarden-desktop
     brave
     firefox
     teams-for-linux
@@ -58,24 +57,30 @@
   xdg.configFile."hypr/hyprland.conf".source = ../dotfiles/hyprland/hyprland.conf;
   xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
   xdg.configFile."waybar/style.css".source = ../dotfiles/waybar/style.css;
-  xdg.configFile."wezterm/wezterm.lua".source = ../dotfiles/wezterm/wezterm.lua;
   xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
   xdg.configFile."ghostty/config".source = ../dotfiles/ghostty/config;
   home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/nixos-config/assets/wallpapers/pawel-czerwinski.jpg
-    wallpaper = eDP-1,~/nixos-config/assets/wallpapers/pawel-czerwinski.jpg
+    preload = /home/nico/nixos-config/assets/wallpapers/pawel-czerwinski.jpg
+
+    wallpaper {
+      monitor = eDP-1
+      path = /home/nico/nixos-config/assets/wallpapers/pawel-czerwinski.jpg
+      fit_mode = cover
+    }
+
     ipc = off
   '';
 
-  # GTK + Theme settings (Nord/dark)
+  # GTK + Theme settings (Tokyo Night/dark)
   gtk = {
     enable = true;
     theme = {
       name = "Tokyonight-Dark";
       package = pkgs.tokyonight-gtk-theme;
     };
+    gtk4.theme = config.gtk.theme;
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
@@ -101,7 +106,10 @@
   };
 
   # Enable Waybar support (with modules defined in your dotfiles)
-  programs.waybar.enable = true;
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+  };
 
   # Use Wayland-optimized environment for apps
   home.sessionVariables = {
@@ -116,7 +124,7 @@
     enable = true;
     profileExtra = ''
       if [ "$(tty)" = "/dev/tty1" ]; then
-        exec Hyprland
+        exec uwsm start hyprland-uwsm.desktop
       fi
     '';
     initExtra = ''
