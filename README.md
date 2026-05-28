@@ -39,7 +39,7 @@ cd nixos-config
 ### 4. Switch to Flake-Based System
 
 ```bash
-sudo nixos-rebuild switch --flake /home/nico/nixos-config#nixos
+sudo nixos-rebuild switch --flake ~/nixos-config#nixos
 ```
 
 > This applies the full system configuration from `hosts/nixos/configuration.nix` and Home Manager config for user `nico`.
@@ -90,4 +90,3 @@ nixos-config/
 - wofi browser search
 - switch swww to hyprpaper
 - make waybar look nice + tools VPN, WLAN, ...
-

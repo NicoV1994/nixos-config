@@ -34,6 +34,7 @@
     neovim
     ripgrep #for fuzzy finding (leader s g)
     codex #OpenAI coding agent CLI
+    opencode #OpenCode coding agent CLI
     unzip
     nodejs_22
 
@@ -63,11 +64,11 @@
   home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = /home/nico/nixos-config/assets/wallpapers/pawel-czerwinski.jpg
+    preload = ${../assets/wallpapers/pawel-czerwinski.jpg}
 
     wallpaper {
       monitor = eDP-1
-      path = /home/nico/nixos-config/assets/wallpapers/pawel-czerwinski.jpg
+      path = ${../assets/wallpapers/pawel-czerwinski.jpg}
       fit_mode = cover
     }
 

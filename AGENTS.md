@@ -13,10 +13,10 @@ This repository is a flake-based NixOS configuration.
 Keep changes scoped: system services in `hosts/`, user apps and shell/editor preferences in `home/` and `dotfiles/`.
 
 ## Build, Test, and Development Commands
-- `sudo nixos-rebuild switch --flake /home/nico/nixos-config#nixos`: canonical apply command for this repo (system + integrated Home Manager).
-- `nix flake check /home/nico/nixos-config`: run flake evaluations/checks before committing.
-- `nix build /home/nico/nixos-config#nixosConfigurations.nixos.config.system.build.toplevel`: fast pre-activation build validation.
-- `sudo nixos-rebuild test --flake /home/nico/nixos-config#nixos`: test activation without making it the boot default.
+- `sudo nixos-rebuild switch --flake ~/nixos-config#nixos`: canonical apply command for this repo (system + integrated Home Manager).
+- `nix flake check ~/nixos-config`: run flake evaluations/checks before committing.
+- `nix build ~/nixos-config#nixosConfigurations.nixos.config.system.build.toplevel`: fast pre-activation build validation.
+- `sudo nixos-rebuild test --flake ~/nixos-config#nixos`: test activation without making it the boot default.
 - `nix flake update`: refresh input lock versions in `flake.lock`.
 
 Run commands from the repository root.
@@ -34,8 +34,8 @@ Run commands from the repository root.
 
 ## Testing Guidelines
 - Minimum check for every change: `nix flake check` must pass.
-- For most changes, run `nix build /home/nico/nixos-config#nixosConfigurations.nixos.config.system.build.toplevel` before any sudo activation.
-- For system-impacting changes (services, drivers, boot, display manager), run `sudo nixos-rebuild test --flake /home/nico/nixos-config#nixos` before `switch`.
+- For most changes, run `nix build ~/nixos-config#nixosConfigurations.nixos.config.system.build.toplevel` before any sudo activation.
+- For system-impacting changes (services, drivers, boot, display manager), run `sudo nixos-rebuild test --flake ~/nixos-config#nixos` before `switch`.
 - After desktop/UI edits, verify affected apps start correctly (Hyprland, Waybar, Neovim, Ghostty).
 
 ## Commit & Pull Request Guidelines

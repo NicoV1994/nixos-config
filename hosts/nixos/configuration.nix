@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./dev/carenext.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
