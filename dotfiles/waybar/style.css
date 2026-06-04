@@ -65,6 +65,7 @@ Primary UI roles:
 #clock,
 #battery,
 #pulseaudio,
+#custom-mic,
 #network,
 #cpu,
 #memory {
@@ -99,6 +100,26 @@ Primary UI roles:
 #pulseaudio {
   color: #bb9af7; /* magenta */
   margin-left: 1rem;
+}
+
+#custom-mic {
+  color: #9ece6a; /* green */
+}
+
+#custom-mic.muted {
+  color: #f7768e; /* red */
+}
+
+#custom-mic.quiet {
+  color: #e0af68; /* yellow */
+}
+
+#custom-mic.signal {
+  color: #9ece6a; /* green */
+}
+
+#custom-mic.loud {
+  color: #73daca; /* mint */
 }
 
 #cpu {

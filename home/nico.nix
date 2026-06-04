@@ -28,6 +28,10 @@
     hyprpaper #background image
     gtklock #lockscreen
     wl-clipboard #clipboard
+    grim #screenshots
+    slurp #screenshot region picker
+    swappy #screenshot editor
+    pavucontrol #audio control panel
     tokyonight-gtk-theme #theme
 
     # terminal tools
@@ -63,6 +67,7 @@
   xdg.configFile."hypr/hyprland.conf".source = ../dotfiles/hyprland/hyprland.conf;
   xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
   xdg.configFile."waybar/style.css".source = ../dotfiles/waybar/style.css;
+  xdg.configFile."waybar/scripts/mic-status.sh".source = ../dotfiles/waybar/scripts/mic-status.sh;
   xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
   xdg.configFile."ghostty/config".source = ../dotfiles/ghostty/config;
   home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;

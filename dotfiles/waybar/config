@@ -8,6 +8,7 @@
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "pulseaudio",
+    "custom/mic",
     "battery",
     "network",
     "clock",
@@ -53,6 +54,13 @@
       "default": ["", "", " "]
     },
     "on-click": "pavucontrol"
+  },
+  "custom/mic": {
+    "exec": "bash ~/.config/waybar/scripts/mic-status.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
   },
   "later": {
     "format": "<span class='icon'>{icon}</span> <span class='text'>{text}</span>"
