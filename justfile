@@ -6,6 +6,11 @@ check:
 fmt:
     nix fmt
 
+build:
+    nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel
+
+preflight: fmt check build
+
 dry:
     sudo nixos-rebuild dry-build --flake .#{{host}}
 

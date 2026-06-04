@@ -25,8 +25,8 @@ Run commands from the repository root.
 - `just agent-context`: print agent instructions, curated context, and relevant repo files.
 - `just fmt`: run `nix fmt`.
 - `just check`: run `nix flake check`.
-- `nix build .#nixosConfigurations.nixos.config.system.build.toplevel`: build the system closure without activating it.
-- `sudo nixos-rebuild dry-build --flake .#nixos`: validate a rebuild plan without activating it.
+- `just build`: build the system closure without activating it.
+- `just preflight`: run formatting, flake checks, and a non-sudo system build.
 
 If `just` is not available, run the underlying command directly.
 
@@ -37,20 +37,25 @@ Agents may run these commands without asking:
 - `just agent-context`
 - `just fmt`
 - `just check`
+- `just build`
+- `just preflight`
 - `nix build .#nixosConfigurations.nixos.config.system.build.toplevel`
 
-Agents must ask before running commands that use `sudo`, including:
+Agents must never run `sudo`. Sudo commands are human-only, even when they are validation commands. Agents may suggest the exact sudo command for the human to run after review, but must not execute it.
+
+Human-only commands that agents must not run:
 
 - `just dry`
+- `just switch`
+- `just boot`
 - `sudo nixos-rebuild dry-build --flake .#nixos`
+- `sudo nixos-rebuild test --flake .#nixos`
+- `nixos-rebuild switch`
+- `nixos-rebuild boot`
 
 Agents may only run these after explicit user approval:
 
-- `just switch`
-- `just boot`
 - `just update`
-- `nixos-rebuild switch`
-- `nixos-rebuild boot`
 - `nix flake update`
 - commands that delete files, generations, or caches
 - commands that push to remotes
@@ -80,8 +85,8 @@ Agents may only run these after explicit user approval:
 
 ## Validation
 - Minimum safe check for most changes: `just check` or `nix flake check`.
-- For most Nix changes, prefer a pre-activation build before any activation.
-- For system-impacting changes such as services, drivers, boot, or display manager changes, use `sudo nixos-rebuild dry-build --flake .#nixos` or `sudo nixos-rebuild test --flake .#nixos` before any `switch`.
+- For most Nix changes, prefer `just build` or `just preflight` before any activation.
+- For system-impacting changes such as services, drivers, boot, or display manager changes, a human should run `just dry` or `sudo nixos-rebuild test --flake .#nixos` before any `switch`.
 - After desktop/UI edits, verify affected apps start correctly when practical: Hyprland, Waybar, Neovim, Ghostty.
 
 ## Commit And PR Guidelines

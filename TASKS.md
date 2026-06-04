@@ -119,7 +119,39 @@ Open Questions:
 - Decide primary target: Android phone, Android emulator, Linux desktop, or web.
 - Decide whether Neovim should get Dart/Flutter LSP support.
 
-## Backlog
+## Betting Table
+
+### Offline Local LLM For OpenCode
+Status: Raw
+Appetite: Medium
+
+Problem:
+I want to use OpenCode while offline by running the strongest local model that the laptop can realistically handle.
+
+Solution:
+Investigate local LLM runtimes and model choices for the laptop hardware. Prefer a setup that can be installed declaratively through NixOS/Home Manager and exposed to OpenCode as a local OpenAI-compatible endpoint if possible.
+
+Look And Feel:
+The workflow should be simple: start the local model service, point OpenCode at it, and keep working without internet. It should choose quality first within the laptop's RAM/VRAM/CPU limits, but remain usable enough for coding tasks.
+
+Done When:
+- The laptop hardware limits are identified, including RAM, GPU/VRAM if available, and CPU.
+- A local runtime is chosen, such as Ollama, llama.cpp, LM Studio, or another OpenAI-compatible server.
+- One or more candidate coding models are tested locally.
+- OpenCode can use the local model endpoint while offline.
+- The chosen setup is documented with start/use commands.
+
+Validation:
+- Disconnect from the network.
+- Start the local model runtime.
+- Run OpenCode against the local endpoint.
+- Ask it to inspect or edit a small repo task.
+- Confirm response speed and quality are acceptable.
+
+Open Questions:
+- Which laptop should this target?
+- Should the runtime be declarative in NixOS, or is a manually managed app acceptable for first testing?
+- Should the priority be best coding quality, fastest usable response, or lowest battery usage?
 
 ### Improve Neovim File Navigation
 Status: Shaped

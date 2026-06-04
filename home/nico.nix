@@ -46,6 +46,7 @@
     # tools
     git
     gh
+    just
     lazygit
     wget
     bitwarden-desktop
