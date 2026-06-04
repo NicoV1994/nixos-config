@@ -13,6 +13,8 @@
     let
       system = "x86_64-linux";
     in {
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit system; }; 
