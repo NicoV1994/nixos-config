@@ -1,47 +1,68 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
-This repository is a flake-based NixOS configuration.
+## Purpose
+This is a personal NixOS desktop/laptop flake repository. It manages the system configuration, integrated Home Manager setup, and user dotfiles for a reusable Wayland desktop environment.
 
-- `flake.nix` / `flake.lock`: entrypoint and pinned inputs.
-- `hosts/nixos/`: system-level NixOS modules (`configuration.nix`, `hardware-configuration.nix`).
-- `home/nico.nix`: Home Manager user configuration.
-- `dotfiles/`: app configs managed declaratively (for example `hyprland/`, `waybar/`, `nvim/`, `ghostty/`).
+Keep changes small, explicit, and easy to review. Prefer plain Markdown documentation and Git history over custom tooling.
+
+## Intended Layout
+- `flake.nix` / `flake.lock`: flake entrypoint and pinned inputs.
+- `hosts/<host>/`: host-specific NixOS configuration, hardware config, and machine-specific imports.
+- `modules/`: reusable NixOS or Home Manager modules shared across hosts when needed.
+- `home/`: user-level Home Manager configuration.
+- `dotfiles/`: app configs managed declaratively, such as Hyprland, Waybar, Neovim, Ghostty, and tmux.
 - `assets/`: static assets such as wallpapers.
+- `docs/decisions/`: short decision notes for meaningful structural changes.
+- `.agent/context.md`: curated repo memory for humans and AI coding agents.
 - `bootstrap-example.nix`: minimal bootstrap config for first install.
 
-Keep changes scoped: system services in `hosts/`, user apps and shell/editor preferences in `home/` and `dotfiles/`.
+Keep host-specific details in `hosts/<host>/`. Keep reusable logic in `modules/` only when it is actually shared or likely to be shared.
 
-## Build, Test, and Development Commands
-- `sudo nixos-rebuild switch --flake ~/nixos-config#nixos`: canonical apply command for this repo (system + integrated Home Manager).
-- `nix flake check ~/nixos-config`: run flake evaluations/checks before committing.
-- `nix build ~/nixos-config#nixosConfigurations.nixos.config.system.build.toplevel`: fast pre-activation build validation.
-- `sudo nixos-rebuild test --flake ~/nixos-config#nixos`: test activation without making it the boot default.
-- `nix flake update`: refresh input lock versions in `flake.lock`.
-
+## Safe Commands
 Run commands from the repository root.
+
+- `just status`: show concise Git status.
+- `just agent-context`: print agent instructions, curated context, and relevant repo files.
+- `just fmt`: run `nix fmt`.
+- `just check`: run `nix flake check`.
+- `nix build .#nixosConfigurations.nixos.config.system.build.toplevel`: build the system closure without activating it.
+- `sudo nixos-rebuild dry-build --flake .#nixos`: validate a rebuild plan without activating it.
+
+If `just` is not available, run the underlying command directly.
+
+## Guardrails
+- Do not update `flake.lock` unless explicitly requested.
+- Do not run `nix flake update` unless explicitly requested.
+- Do not run `nixos-rebuild switch` unless explicitly requested.
+- Do not run `nixos-rebuild boot` unless explicitly requested.
+- Do not run destructive cleanup commands unless explicitly requested.
+- Do not change unrelated NixOS configuration while working on documentation or tooling.
+- Prefer small, reviewable changes over broad refactors.
+- Prefer Nix-native solutions over shell-script workarounds.
+- Keep host-specific details out of shared modules.
+- Add a decision note under `docs/decisions/` for meaningful structural changes.
 
 ## Home Manager Integration
 - Home Manager is integrated through the NixOS module in `flake.nix` (`home-manager.nixosModules.home-manager` and `home-manager.users.nico`).
-- Default workflow is `nixos-rebuild` for applying both system and user configuration.
-- Do not assume standalone `home-manager switch` is available in this repo unless a separate `homeConfigurations` output is added.
+- Default apply workflow is `nixos-rebuild` for both system and user configuration, but activation commands require explicit user approval.
+- Do not assume standalone `home-manager switch` is available unless a separate `homeConfigurations` output is added.
 
-## Coding Style & Naming Conventions
+## Coding Style
 - Use idiomatic Nix formatting: 2-space indentation, aligned attribute sets where readable, trailing commas in multi-line sets.
 - Prefer small, composable option blocks over large monolithic sections.
-- Name commits and modules descriptively by domain (for example audio, hyprland, waybar).
+- Name commits and modules descriptively by domain, for example `hyprland`, `waybar`, or `audio`.
 - Keep dotfile names conventional (`config`, `init.lua`, `style.css`) unless upstream tooling expects otherwise.
 
-## Testing Guidelines
-- Minimum check for every change: `nix flake check` must pass.
-- For most changes, run `nix build ~/nixos-config#nixosConfigurations.nixos.config.system.build.toplevel` before any sudo activation.
-- For system-impacting changes (services, drivers, boot, display manager), run `sudo nixos-rebuild test --flake ~/nixos-config#nixos` before `switch`.
-- After desktop/UI edits, verify affected apps start correctly (Hyprland, Waybar, Neovim, Ghostty).
+## Validation
+- Minimum safe check for most changes: `just check` or `nix flake check`.
+- For most Nix changes, prefer a pre-activation build before any activation.
+- For system-impacting changes such as services, drivers, boot, or display manager changes, use `sudo nixos-rebuild dry-build --flake .#nixos` or `sudo nixos-rebuild test --flake .#nixos` before any `switch`.
+- After desktop/UI edits, verify affected apps start correctly when practical: Hyprland, Waybar, Neovim, Ghostty.
 
-## Commit & Pull Request Guidelines
-Git history favors short, imperative messages, often Conventional Commit-style:
+## Commit And PR Guidelines
+Git history favors short, imperative messages, often Conventional Commit-style.
 
 - Preferred: `feat(nixos): ...`, `fix: ...`, `chore: ...`.
 - Keep subject lines concise and focused on one change.
-- In PRs, include: purpose, key files changed, validation steps run, and screenshots for visual dotfile/UI updates (Waybar/Hyprland styling).
-- Link related issues/tasks when applicable.
+- In PRs, include purpose, key files changed, validation steps run, and screenshots for visual dotfile/UI updates.
+- Link related issues or tasks when applicable.
