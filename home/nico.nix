@@ -21,6 +21,7 @@
     ghostty
     fastfetch
     nerd-fonts.jetbrains-mono #waybar
+    networkmanagerapplet
     vanilla-dmz #cursor
     wofi #d-menu
     thunar #file explorere
@@ -49,6 +50,9 @@
     teams-for-linux
     vscode-fhs
     dbeaver-bin
+
+    # personal / entertainment
+    discord
 
     # Qt theming tools
     libsForQt5.qt5ct

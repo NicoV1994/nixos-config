@@ -14,6 +14,9 @@
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openvpn
+  ];
 
   time.timeZone = "Europe/Vienna";
 
