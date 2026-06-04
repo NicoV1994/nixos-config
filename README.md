@@ -59,6 +59,12 @@ sudo nixos-rebuild switch --flake ~/nixos-config#nixos
 
 ---
 
+## Tasks And Backlog
+
+See `TASKS.md` for active work, shaped task briefs, and backlog items.
+
+---
+
 ## Tools Used
 
 | Tool                                  | Role                                |
@@ -85,8 +91,3 @@ nixos-config/
 ├── dotfiles/                   # Dotfiles for Hyprland, Waybar, etc.
 └── README.md
 ```
-
-# TODO List
-- wofi browser search
-- switch swww to hyprpaper
-- make waybar look nice + tools VPN, WLAN, ...
