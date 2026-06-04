@@ -30,6 +30,31 @@ Run commands from the repository root.
 
 If `just` is not available, run the underlying command directly.
 
+## Agent Command Policy
+Agents may run these commands without asking:
+
+- `just status`
+- `just agent-context`
+- `just fmt`
+- `just check`
+- `nix build .#nixosConfigurations.nixos.config.system.build.toplevel`
+
+Agents must ask before running commands that use `sudo`, including:
+
+- `just dry`
+- `sudo nixos-rebuild dry-build --flake .#nixos`
+
+Agents may only run these after explicit user approval:
+
+- `just switch`
+- `just boot`
+- `just update`
+- `nixos-rebuild switch`
+- `nixos-rebuild boot`
+- `nix flake update`
+- commands that delete files, generations, or caches
+- commands that push to remotes
+
 ## Guardrails
 - Do not update `flake.lock` unless explicitly requested.
 - Do not run `nix flake update` unless explicitly requested.
