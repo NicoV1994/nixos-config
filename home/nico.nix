@@ -87,7 +87,7 @@ in
     preload = ${wallpaper}
 
     wallpaper {
-      monitor = eDP-1
+      monitor =
       path = ${wallpaper}
       fit_mode = cover
     }
