@@ -1,4 +1,4 @@
-# ❄️ NixOS Config — Hyprland Setup with Home Manager
+# NixOS Config - Hyprland Setup with Home Manager
 
 This repository contains my personal NixOS system configuration using:
 
@@ -15,16 +15,21 @@ To install this config on a fresh NixOS system:
 
 ### 1. Install Minimal NixOS
 
-Use the graphical or text-based installer to set up a minimal NixOS system. Ensure networking works.
+Use the graphical or text-based installer to set up a minimal NixOS system. Ensure networking works and `/etc/nixos/hardware-configuration.nix` exists for that laptop.
 
 ### 2. Create a Temporary Bootstrap Config
 
-Save this repo’s `bootstrap-example.nix` and a matching `hardware-configuration.nix` into `/etc/nixos/`, then run:
+Save this repo's `bootstrap-example.nix` as `/etc/nixos/configuration.nix`. It imports `/etc/nixos/hardware-configuration.nix`, so keep the generated hardware file from the fresh install.
 
 ```bash
 sudo cp bootstrap-example.nix /etc/nixos/configuration.nix
-sudo cp hardware-configuration.nix /etc/nixos/
 sudo nixos-rebuild switch
+```
+
+If `/etc/nixos/hardware-configuration.nix` is missing, generate it on the target laptop first:
+
+```bash
+sudo nixos-generate-config --show-hardware-config | sudo tee /etc/nixos/hardware-configuration.nix >/dev/null
 ```
 
 ### 3. Clone the Real Config
@@ -87,7 +92,15 @@ See `TASKS.md` for active work, shaped task briefs, and backlog items.
 
 ---
 
-## 💠 Structure Overview
+## New Laptop Notes
+
+For a different laptop, do not reuse `hosts/nixos/hardware-configuration.nix`; it contains disk UUIDs and hardware details for the current machine. Generate a fresh hardware config on the target laptop, then add a new host directory such as `hosts/framework/` and a matching `nixosConfigurations.framework` output when the hardware is known.
+
+Work-specific networking lives behind `nico.dev.carenext.enable`. Keep it disabled for hosts that do not need those local dev hostnames or trusted Docker interfaces.
+
+Private keys should not be committed to this repo. Keep SSH keys in `~/.ssh` or manage them with a secret-management tool before using this repo on more machines.
+
+## Structure Overview
 
 ```
 nixos-config/

@@ -31,6 +31,8 @@
     grim #screenshots
     slurp #screenshot region picker
     swappy #screenshot editor
+    brightnessctl #laptop brightness keys
+    playerctl #media keys
     pavucontrol #audio control panel
     tokyonight-gtk-theme #theme
 
@@ -76,14 +78,15 @@
   xdg.configFile."hypr/hyprpaper.conf".text = ''
     preload = ${../assets/wallpapers/pawel-czerwinski.jpg}
 
-    wallpaper {
-      monitor = eDP-1
-      path = ${../assets/wallpapers/pawel-czerwinski.jpg}
-      fit_mode = cover
-    }
+    wallpaper = ,${../assets/wallpapers/pawel-czerwinski.jpg}
 
     ipc = off
   '';
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   # GTK + Theme settings (Tokyo Night/dark)
   gtk = {

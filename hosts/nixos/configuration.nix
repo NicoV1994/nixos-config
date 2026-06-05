@@ -18,6 +18,13 @@
     networkmanager-openvpn
   ];
 
+  hardware.enableRedistributableFirmware = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  services.fwupd.enable = true;
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
+
   time.timeZone = "Europe/Vienna";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -59,11 +66,20 @@
   # Container runtime
   virtualisation.docker.enable = true;
 
+  nico.dev.carenext = {
+    enable = true;
+    trustedInterfaces = [
+      "docker0"
+      # Current Docker Compose bridge for /home/nico/Haggla/Milon/milon-care-next.
+      "br-f078f06683cb"
+    ];
+  };
+
   # Your user (Home Manager will manage packages)
   users.users.nico = {
     isNormalUser = true;
     description = "Nico";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
   };
 
   security.pam.services.gtklock = {
