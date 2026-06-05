@@ -93,6 +93,7 @@ in
     }
 
     ipc = off
+    splash = false
   '';
 
   programs.direnv = {
