@@ -10,7 +10,7 @@
     "custom/mic",
     "pulseaudio",
     "battery",
-    "network",
+    "custom/network",
     "clock",
   ],
   "hyprland/workspaces": {
@@ -30,13 +30,12 @@
     "format-charging": " {capacity}%",
     "tooltip": false
   },
-  "network": {
-    "format-wifi": "󰤢 ",
-    "format-ethernet": "󰈀 ",
-    "format-disconnected": "󰤠 ",
+  "custom/network": {
+    "exec": "bash ~/.config/waybar/scripts/network-status.sh",
+    "return-type": "json",
     "interval": 5,
-    "tooltip": false,
-    "on-click": "nm-connection-editor"
+    "on-click": "bash ~/.config/waybar/scripts/vpn-menu.sh",
+    "on-click-right": "nm-connection-editor"
   },
   "cpu": {
     "interval": 1,

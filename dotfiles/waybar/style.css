@@ -66,7 +66,7 @@ Primary UI roles:
 #battery,
 #pulseaudio,
 #custom-mic,
-#network,
+#custom-network,
 #cpu,
 #memory {
   background-color: #1a1b26;
@@ -130,8 +130,16 @@ Primary UI roles:
   color: #b4f9f8; /* aqua */
 }
 
-#network {
+#custom-network {
   color: #2ac3de; /* cyan */
+}
+
+#custom-network.vpn {
+  color: #9ece6a; /* green */
+}
+
+#custom-network.disconnected {
+  color: #f7768e; /* red */
 }
 
 #custom-music {
