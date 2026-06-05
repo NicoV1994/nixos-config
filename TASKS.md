@@ -4,36 +4,6 @@ This file tracks not-done work for this NixOS config. Tasks are written as small
 
 ## Active / Not Done
 
-### Quick Notes Shortcut
-Status: Shaped
-Appetite: Small
-
-Problem:
-I want a very fast way to open a new note without thinking about filenames or folders. The notes should live in one place and be easy to fuzzy find later.
-
-Solution:
-Add a Hyprland shortcut, likely `Super+N`, that opens Neovim with a new Markdown file in `~/notes`. The filename should be timestamp based, using a sortable format like `YYYY-MM-DD-HH-MM-SS.md`.
-
-Look And Feel:
-The shortcut should feel instant. It should open a terminal editor directly into an empty note file. The notes folder should be boring and stable: plain Markdown files, no database, no app lock-in.
-
-Done When:
-- `~/notes` is created automatically if it does not exist.
-- Pressing the shortcut opens Neovim on a new timestamped note.
-- The filename includes date and time down to seconds.
-- Existing notes are never overwritten.
-- Notes can be found later with normal shell tools or Neovim/Telescope fuzzy search.
-
-Validation:
-- Apply the NixOS config.
-- Press the shortcut twice.
-- Confirm two different files exist in `~/notes`.
-- Confirm Neovim opens the new file each time.
-
-Open Questions:
-- Confirm the shortcut should be `Super+N`.
-- Decide whether the terminal should be `ghostty` explicitly or use the existing Hyprland `$terminal` variable.
-
 ### Install PewDiePie Odysseus
 Status: Raw
 Appetite: Small
@@ -182,25 +152,6 @@ Validation:
 - Press `Space e`.
 - Navigate files with `Enter`.
 
-### Tune Waybar Microphone Indicator
-Status: Shaped
-Appetite: Small
-
-Problem:
-The microphone indicator should show real input activity without wasting battery or showing constant noise.
-
-Solution:
-Tune the current RMS threshold and interval after testing with the actual headset and laptop microphone.
-
-Done When:
-- Silent room does not show constant activity.
-- Normal speech shows visible activity quickly.
-- Muted mode stays cheap and clear.
-
-Validation:
-- Test muted, silent unmuted, and normal speech cases.
-- Check Waybar CPU usage before and after.
-
 ### Power Diagnostics Tools
 Status: Raw
 Appetite: Small
@@ -218,3 +169,13 @@ Done When:
 ## Done
 
 Completed work can be moved here with a short note and date.
+
+### Quick Notes Shortcut
+Completed: 2026-06-05
+
+Added `Super+N` in Hyprland to create `~/notes` when needed and open a new timestamped Markdown note in Ghostty/Neovim without overwriting existing notes.
+
+### Tune Waybar Microphone Indicator
+Completed: 2026-06-05
+
+Added a Waybar microphone indicator with mute state, fixed-width input bars, and live signal thresholds. Silent unmuted input stays visually stable, normal speech shows activity, and muted mode remains cheap and clear.
