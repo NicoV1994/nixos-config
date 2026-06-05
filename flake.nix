@@ -7,9 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    odysseus.url = "github:pewdiepie-archdaemon/odysseus/pull/2568/head";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, odysseus, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -33,7 +34,7 @@
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit system; };
+        specialArgs = { inherit odysseus system; };
         modules = [
           ./hosts/nixos/configuration.nix
           home-manager.nixosModules.home-manager

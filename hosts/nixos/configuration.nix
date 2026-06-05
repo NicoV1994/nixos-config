@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./experiments/odysseus
     ./dev/carenext.nix
   ];
 
