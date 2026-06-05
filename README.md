@@ -3,7 +3,7 @@
 This repository contains my personal NixOS system configuration using:
 
 * **Nix flakes** for reproducible and modular builds
-* **Home Manager**or user-level dotfiles and packages
+* **Home Manager** for user-level dotfiles and packages
 * **Hyprland** for Wayland desktop experience
 * Custom dotfiles for `waybar`, `nvim` (WIP), etc.
 
@@ -51,11 +51,20 @@ sudo ln -s $PWD /etc/nixos
 ```
 
 ## Rebuilding the System or User Config
-Use this command:
+After reviewing changes, humans can apply them with:
 
 ```bash
 sudo nixos-rebuild switch --flake ~/nixos-config#nixos
 ```
+
+For non-activating validation, use the repo task runner:
+
+```bash
+just validate   # read-only check + no-link system build
+just preflight  # format, check, and no-link system build
+```
+
+Agents should follow `AGENTS.md`: they may run validation commands, but must never run `sudo` or activate the system.
 
 ---
 
@@ -83,11 +92,15 @@ See `TASKS.md` for active work, shaped task briefs, and backlog items.
 ```
 nixos-config/
 ├── flake.nix                   # Main entry point
+├── justfile                    # Stable command interface
+├── AGENTS.md                   # Coding-agent instructions and guardrails
+├── .agent/context.md           # Curated repo memory
 ├── bootstrap-example.nix       # Use this for minimal install
 ├── hosts/nixos/                # System-level config
 │   ├── configuration.nix
 │   └── hardware-configuration.nix
 ├── home/nico.nix               # User-level config
 ├── dotfiles/                   # Dotfiles for Hyprland, Waybar, etc.
+├── docs/decisions/             # Structural decision notes
 └── README.md
 ```

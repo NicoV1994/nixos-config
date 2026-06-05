@@ -1,13 +1,21 @@
 host := "nixos"
 
 check:
-    nix flake check
+    @printf 'Running flake check...\n'
+    @nix flake check --no-warn-dirty
+    @printf 'Flake check complete.\n'
 
 fmt:
-    nix fmt
+    @printf 'Formatting Nix files...\n'
+    @nix fmt --no-warn-dirty
+    @printf 'Formatting complete.\n'
 
 build:
-    nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel
+    @printf 'Building system closure without activation...\n'
+    @nix build --no-link --no-warn-dirty .#nixosConfigurations.{{host}}.config.system.build.toplevel
+    @printf 'Build complete.\n'
+
+validate: check build
 
 preflight: fmt check build
 

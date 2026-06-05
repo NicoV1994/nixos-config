@@ -21,11 +21,17 @@ Keep host-specific details in `hosts/<host>/`. Keep reusable logic in `modules/`
 ## Safe Commands
 Run commands from the repository root.
 
+Read-only safe commands:
+
 - `just status`: show concise Git status.
 - `just agent-context`: print agent instructions, curated context, and relevant repo files.
-- `just fmt`: run `nix fmt`.
 - `just check`: run `nix flake check`.
-- `just build`: build the system closure without activating it.
+- `just build`: build the system closure without activating it or creating a `result` symlink.
+- `just validate`: run read-only validation without formatting.
+
+Editing-agent safe commands after file changes:
+
+- `just fmt`: run `nix fmt`.
 - `just preflight`: run formatting, flake checks, and a non-sudo system build.
 
 If `just` is not available, run the underlying command directly.
@@ -35,11 +41,17 @@ Agents may run these commands without asking:
 
 - `just status`
 - `just agent-context`
-- `just fmt`
 - `just check`
 - `just build`
+- `just validate`
+
+Editing agents may also run these after they have made file changes:
+
+- `just fmt`
 - `just preflight`
-- `nix build .#nixosConfigurations.nixos.config.system.build.toplevel`
+- `nix build --no-link .#nixosConfigurations.nixos.config.system.build.toplevel`
+
+Read-only agents should not run formatting commands because they can modify files.
 
 Agents must never run `sudo`. Sudo commands are human-only, even when they are validation commands. Agents may suggest the exact sudo command for the human to run after review, but must not execute it.
 
@@ -85,6 +97,7 @@ Agents may only run these after explicit user approval:
 
 ## Validation
 - Minimum safe check for most changes: `just check` or `nix flake check`.
+- For read-only review, use `just validate`.
 - For most Nix changes, prefer `just build` or `just preflight` before any activation.
 - For system-impacting changes such as services, drivers, boot, or display manager changes, a human should run `just dry` or `sudo nixos-rebuild test --flake .#nixos` before any `switch`.
 - After desktop/UI edits, verify affected apps start correctly when practical: Hyprland, Waybar, Neovim, Ghostty.

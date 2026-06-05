@@ -37,7 +37,7 @@
 
   # Display manager and Wayland setup
   services.xserver.enable = false;
- 
+
   # Enable Hyprland
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;

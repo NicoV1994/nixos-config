@@ -140,9 +140,9 @@
       fi
     '';
     initExtra = ''
-    if [ "$TERM_PROGRAM" = "ghostty" ]; then
-      fastfetch
-    fi
+      if [ "$TERM_PROGRAM" = "ghostty" ]; then
+        fastfetch
+      fi
     '';
   };
 
