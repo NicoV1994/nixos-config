@@ -43,6 +43,16 @@
   programs.hyprland.withUWSM = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  # Audio
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+  services.pulseaudio.enable = false;
+
   # Enable unfree packages
   nixpkgs.config.allowUnfree = true;
 
