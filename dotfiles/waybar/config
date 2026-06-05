@@ -11,6 +11,7 @@
     "pulseaudio",
     "battery",
     "custom/network",
+    "tray",
     "clock",
   ],
   "hyprland/workspaces": {
@@ -34,8 +35,11 @@
     "exec": "bash ~/.config/waybar/scripts/network-status.sh",
     "return-type": "json",
     "interval": 5,
-    "on-click": "bash ~/.config/waybar/scripts/vpn-menu.sh",
-    "on-click-right": "nm-connection-editor"
+    "on-click": "bash ~/.config/waybar/scripts/vpn-menu.sh"
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8
   },
   "cpu": {
     "interval": 1,
