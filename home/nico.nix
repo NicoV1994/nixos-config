@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  wallpaper = ../assets/wallpapers/pawel-czerwinski.jpg;
+in
+
 {
   home.username = "nico";
   home.homeDirectory = "/home/nico";
@@ -67,7 +71,11 @@
   ];
 
   # Link config files from your repo
-  xdg.configFile."hypr/hyprland.conf".source = ../dotfiles/hyprland/hyprland.conf;
+  xdg.configFile."hypr/hyprland.conf".text =
+    builtins.replaceStrings
+      [ "exec-once = hyprpaper" ]
+      [ "exec-once = ${pkgs.hyprpaper}/bin/hyprpaper" ]
+      (builtins.readFile ../dotfiles/hyprland/hyprland.conf);
   xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
   xdg.configFile."waybar/style.css".source = ../dotfiles/waybar/style.css;
   xdg.configFile."waybar/scripts/mic-status.sh".source = ../dotfiles/waybar/scripts/mic-status.sh;
@@ -76,9 +84,13 @@
   home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ${../assets/wallpapers/pawel-czerwinski.jpg}
+    preload = ${wallpaper}
 
-    wallpaper = ,${../assets/wallpapers/pawel-czerwinski.jpg}
+    wallpaper {
+      monitor = eDP-1
+      path = ${wallpaper}
+      fit_mode = cover
+    }
 
     ipc = off
   '';

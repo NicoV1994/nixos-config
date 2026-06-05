@@ -59,19 +59,19 @@ signal_percent=${signal_percent:-0}
 
 if [ "$signal_percent" -ge 35 ]; then
   meter="▁▃▅▇"
-  text=" ${meter}"
+  text="${meter} "
   class="active loud"
 elif [ "$signal_percent" -ge 15 ]; then
-  meter="▁▃▅"
-  text=" ${meter}"
+  meter="▁▃▅▁"
+  text="${meter} "
   class="active signal"
 elif [ "$signal_percent" -ge 4 ]; then
-  meter="▁▃"
-  text=" ${meter}"
+  meter="▁▃▁▁"
+  text="${meter} "
   class="active signal"
 else
-  meter="▁"
-  text=""
+  meter="▁▁▁▁"
+  text="${meter} "
   class="active quiet"
 fi
 
