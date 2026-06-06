@@ -6,6 +6,12 @@ Current focus: Hyprland, Waybar, Ghostty, tmux, Neovim, VSCode, DBeaver, screen 
 
 Design preferences: reusable modules, thin host configs, simple rebuild workflow, no overengineering.
 
+## Maintenance
+
+- Generation cleanup is human-only because it uses `sudo` and removes rollback points.
+- Default cleanup policy: keep the latest 5 system generations with `just clean-generations` after confirming the current generation works.
+- Agents may document or suggest cleanup commands but must not run `sudo nix-env --delete-generations`, `sudo nix store gc`, or `just clean-generations`.
+
 ## Flutter Android Development
 
 - Use the reusable Nix dev shell for Flutter/Android work: `nix develop /home/nico/nixos-config#flutter-android`.
