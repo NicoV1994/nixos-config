@@ -86,8 +86,11 @@ in
       (builtins.readFile ../dotfiles/hyprland/hyprland.conf);
   xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
   xdg.configFile."waybar/style.css".source = ../dotfiles/waybar/style.css;
+  xdg.configFile."waybar/scripts/cpu-status.sh".source = ../dotfiles/waybar/scripts/cpu-status.sh;
+  xdg.configFile."waybar/scripts/memory-status.sh".source = ../dotfiles/waybar/scripts/memory-status.sh;
   xdg.configFile."waybar/scripts/mic-status.sh".source = ../dotfiles/waybar/scripts/mic-status.sh;
   xdg.configFile."waybar/scripts/network-status.sh".source = ../dotfiles/waybar/scripts/network-status.sh;
+  xdg.configFile."waybar/scripts/system-menu.sh".source = ../dotfiles/waybar/scripts/system-menu.sh;
   xdg.configFile."waybar/scripts/vpn-menu.sh".source = ../dotfiles/waybar/scripts/vpn-menu.sh;
   xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
   xdg.configFile."ghostty/config".source = ../dotfiles/ghostty/config;

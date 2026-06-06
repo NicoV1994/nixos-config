@@ -67,8 +67,9 @@ Primary UI roles:
 #pulseaudio,
 #custom-mic,
 #custom-network,
-#cpu,
-#memory {
+#custom-system-menu,
+#custom-cpu,
+#custom-memory {
   background-color: #1a1b26;
   padding: 0.5rem 1rem;
   margin: 5px 3px;
@@ -122,11 +123,11 @@ Primary UI roles:
   color: #73daca; /* mint */
 }
 
-#cpu {
-  color: #ff9e64; /* orange */
+#custom-cpu {
+  color: #e0af68; /* yellow */
 }
 
-#memory {
+#custom-memory {
   color: #b4f9f8; /* aqua */
 }
 
@@ -140,6 +141,10 @@ Primary UI roles:
 
 #custom-network.disconnected {
   color: #f7768e; /* red */
+}
+
+#custom-system-menu {
+  color: #ff9e64; /* orange */
 }
 
 #custom-music {

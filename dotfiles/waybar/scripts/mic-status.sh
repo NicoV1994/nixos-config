@@ -19,7 +19,7 @@ volume=$(printf '%s\n' "$volume_info" | grep -oE '[0-9]+\.[0-9]+' | head -n1)
 volume_percent=$(awk -v volume="${volume:-0}" 'BEGIN { printf "%d", (volume * 100) + 0.5 }')
 
 if printf '%s\n' "$volume_info" | grep -q '\[MUTED\]'; then
-  tooltip="Microphone: muted\nInput gain: ${volume_percent}%"
+  tooltip=$(printf 'Microphone: muted\nInput gain: %s%%' "$volume_percent")
   printf '{"text":"","tooltip":"%s","class":"muted"}\n' "$(escape_json "$tooltip")"
   exit 0
 fi
@@ -75,5 +75,5 @@ else
   class="active quiet"
 fi
 
-tooltip="Microphone: on\nInput gain: ${volume_percent}%\nSignal: ${meter} ${signal_percent}%"
+tooltip=$(printf 'Microphone: on\nInput gain: %s%%\nSignal: %s %s%%' "$volume_percent" "$meter" "$signal_percent")
 printf '{"text":"%s","tooltip":"%s","class":"%s"}\n' "$text" "$(escape_json "$tooltip")" "$class"
