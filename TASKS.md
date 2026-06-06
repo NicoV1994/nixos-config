@@ -4,35 +4,8 @@ This file tracks not-done work for this NixOS config. Tasks are written as small
 
 ## Active / Not Done
 
-### Install PewDiePie Odysseus
-Status: Raw
-Appetite: Small
-
-Problem:
-I want PewDiePie Odysseus installed on this setup.
-
-Solution:
-Find the correct package, app source, or installation method and add it declaratively to this repo if possible.
-
-Look And Feel:
-The app should launch from the desktop/app launcher like other installed applications. Prefer a reproducible Nix package over a manual install.
-
-Done When:
-- The correct app/project is identified.
-- It is installed declaratively if a Nix package or reliable source exists.
-- It can be launched after `nixos-rebuild switch`.
-
-Validation:
-- Apply the config.
-- Launch the app from terminal or app launcher.
-- Confirm it starts successfully.
-
-Open Questions:
-- Clarify the exact upstream project/app name and source URL.
-- Check whether this exists in nixpkgs, Flathub, AppImage, or another trustworthy source.
-
 ### Repository Learning Log And AI Capability
-Status: Shaped
+Status: Next
 Appetite: Medium
 
 Problem:
@@ -59,40 +32,41 @@ Open Questions:
 - Decide whether logs should be in `docs/logs/` or another root folder.
 - Decide the threshold for writing a log entry.
 
-### Flutter Development Environment
-Status: Shaped
-Appetite: Medium
-
-Problem:
-I need this NixOS setup to support Flutter app development.
-
-Solution:
-Add the required development tools declaratively. Support Flutter CLI workflows first, then add editor integration if needed.
-
-Look And Feel:
-Flutter development should work from the terminal and Neovim without manual one-off system setup. Android support should be explicit because it often needs SDK, licenses, emulator, USB/debug permissions, and environment variables.
-
-Done When:
-- `flutter` is available in the user environment or a documented dev shell.
-- Android SDK/tooling approach is decided and configured.
-- A new Flutter app can be created and analyzed.
-- The setup supports running on at least one target, such as Android device, emulator, Linux desktop, or web.
-
-Validation:
-- Run `flutter doctor`.
-- Run `flutter create` in a temporary directory.
-- Run `flutter analyze`.
-- Run a sample app on the selected target.
-
-Open Questions:
-- Decide whether Flutter should be globally installed in `home.packages` or isolated in a `devShell`.
-- Decide primary target: Android phone, Android emulator, Linux desktop, or web.
-- Decide whether Neovim should get Dart/Flutter LSP support.
-
 ## Betting Table
 
+### Install PewDiePie Odysseus
+Status: Paused
+Appetite: Small
+
+Problem:
+I want PewDiePie Odysseus installed on this setup.
+
+Current State:
+There is separate branch work for Odysseus, but it is too experimental to continue on `main` right now.
+
+Solution:
+Do not proceed until the exact upstream project/app and installation strategy are clearer. If resumed, prefer a reproducible Nix package over a manual install.
+
+Look And Feel:
+The app should launch from the desktop/app launcher like other installed applications.
+
+Done When:
+- The correct app/project is identified.
+- It is installed declaratively if a Nix package or reliable source exists.
+- It can be launched after `nixos-rebuild switch`.
+
+Validation:
+- Apply the config.
+- Launch the app from terminal or app launcher.
+- Confirm it starts successfully.
+
+Open Questions:
+- Clarify the exact upstream project/app name and source URL.
+- Check whether this exists in nixpkgs, Flathub, AppImage, or another trustworthy source.
+- Decide whether to keep experimenting on the separate branch or drop it.
+
 ### Offline Local LLM For OpenCode
-Status: Raw
+Status: Paused
 Appetite: Medium
 
 Problem:
@@ -100,6 +74,9 @@ I want to use OpenCode while offline by running the strongest local model that t
 
 Solution:
 Investigate local LLM runtimes and model choices for the laptop hardware. Prefer a setup that can be installed declaratively through NixOS/Home Manager and exposed to OpenCode as a local OpenAI-compatible endpoint if possible.
+
+Current State:
+Local LLM work is present/running on an experimental branch, but it is not usable enough right now and is not a priority.
 
 Look And Feel:
 The workflow should be simple: start the local model service, point OpenCode at it, and keep working without internet. It should choose quality first within the laptop's RAM/VRAM/CPU limits, but remain usable enough for coding tasks.
@@ -165,17 +142,3 @@ Consider adding tools like `powertop`, `upower`, and `powerstat`.
 Done When:
 - Battery/power state can be inspected from the terminal.
 - There is a documented command for checking rough idle drain.
-
-## Done
-
-Completed work can be moved here with a short note and date.
-
-### Quick Notes Shortcut
-Completed: 2026-06-05
-
-Added `Super+N` in Hyprland to create `~/notes` when needed and open a new timestamped Markdown note in Ghostty/Neovim without overwriting existing notes.
-
-### Tune Waybar Microphone Indicator
-Completed: 2026-06-05
-
-Added a Waybar microphone indicator with mute state, fixed-width input bars, and live signal thresholds. Silent unmuted input stays visually stable, normal speech shows activity, and muted mode remains cheap and clear.
