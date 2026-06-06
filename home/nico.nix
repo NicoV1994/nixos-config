@@ -66,6 +66,7 @@ in
     bitwarden-desktop
     brave
     firefox
+    proton-vpn
     teams-for-linux
     vscode-fhs
     dbeaver-bin
@@ -95,6 +96,15 @@ in
   xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
   xdg.configFile."ghostty/config".source = ../dotfiles/ghostty/config;
   home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;
+
+  xdg.configFile."autostart/proton-vpn.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=Proton VPN
+    Exec=${pkgs.proton-vpn}/bin/protonvpn-app
+    Terminal=false
+    X-GNOME-Autostart-enabled=true
+  '';
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
     preload = ${wallpaper}

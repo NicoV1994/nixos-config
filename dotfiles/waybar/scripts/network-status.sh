@@ -68,23 +68,27 @@ active_connections=$(nmcli -t -f NAME,TYPE connection show --active 2>/dev/null 
 devices=$(nmcli -t -f DEVICE,TYPE,STATE,CONNECTION device status 2>/dev/null || true)
 
 vpn_name=$(printf '%s\n' "$active_connections" | awk -F: '$2 == "vpn" { print $1; exit }')
+vpn_label=$vpn_name
+if printf '%s\n' "$vpn_name" | grep -qi 'proton'; then
+  vpn_label="Proton VPN"
+fi
 wifi_device=$(printf '%s\n' "$devices" | awk -F: '$2 == "wifi" && $3 == "connected" { print $1; exit }')
 wifi_name=$(printf '%s\n' "$devices" | awk -F: '$2 == "wifi" && $3 == "connected" { print $4; exit }')
 ethernet_device=$(printf '%s\n' "$devices" | awk -F: '$2 == "ethernet" && $3 == "connected" { print $1; exit }')
 ethernet_name=$(printf '%s\n' "$devices" | awk -F: '$2 == "ethernet" && $3 == "connected" { print $4; exit }')
 
 if [ -n "$wifi_name" ]; then
-  base_icon="󰤨"
+  base_icon="󰈁"
   network_kind="Wi-Fi"
   network_device=$wifi_device
   network_label=$(printf 'SSID: %s\nDevice: %s' "$wifi_name" "$wifi_device")
 elif [ -n "$ethernet_name" ]; then
-  base_icon="󰈀"
+  base_icon="󰈁"
   network_kind="Ethernet"
   network_device=$ethernet_device
   network_label=$(printf 'Connection: %s\nDevice: %s' "$ethernet_name" "$ethernet_device")
 else
-  base_icon="󰤭"
+  base_icon="󰖪"
   network_kind="Disconnected"
   network_device=""
   network_label="No active Wi-Fi or Ethernet connection"
@@ -93,9 +97,9 @@ fi
 speed_label=$(connection_speed "$network_device")
 
 if [ -n "$vpn_name" ]; then
-  text="$base_icon 󰌾"
+  text="󰌾"
   class="vpn"
-  tooltip=$(printf 'Network: %s\n%s\nSpeed: %s\nVPN: %s' "$network_kind" "$network_label" "$speed_label" "$vpn_name")
+  tooltip=$(printf 'Network: %s\n%s\nSpeed: %s\nVPN: %s' "$network_kind" "$network_label" "$speed_label" "$vpn_label")
 elif [ "$network_kind" = "Disconnected" ]; then
   text="$base_icon"
   class="disconnected"

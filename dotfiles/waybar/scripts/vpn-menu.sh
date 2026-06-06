@@ -12,6 +12,7 @@ fi
 choice=$(
   printf '%s\n' \
     "$current" \
+    "Open Proton VPN" \
     "Connect milon PROD" \
     "Connect milon DEV" \
     "Disconnect VPN" \
@@ -20,6 +21,9 @@ choice=$(
 )
 
 case "$choice" in
+  "Open Proton VPN")
+    protonvpn-app &
+    ;;
   "Connect milon PROD")
     nmcli connection up "milon PROD"
     ;;

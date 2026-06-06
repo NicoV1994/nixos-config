@@ -105,6 +105,8 @@ Agents may only run these after explicit user approval:
 
 ## Validation
 - Minimum safe check for most changes: `just check` or `nix flake check`.
+- Use targeted validation when it is sufficient: shell syntax/output checks for script edits, formatter checks for formatting-sensitive changes, and app restarts for desktop dotfiles.
+- Do not run `just check` for obviously safe cosmetic-only edits such as CSS color changes unless there is a concrete risk that Nix evaluation or file wiring changed.
 - For read-only review, use `just validate`.
 - For most Nix changes, prefer `just build` or `just preflight` before any activation.
 - For system-impacting changes such as services, drivers, boot, or display manager changes, a human should run `just dry` or `sudo nixos-rebuild test --flake .#nixos` before any `switch`.
