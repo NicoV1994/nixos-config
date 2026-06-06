@@ -23,6 +23,7 @@ Keep host-specific details in `hosts/<host>/`. Keep reusable logic in `modules/`
 - Use `docs/logs/` for significant debugging sessions, recurring issues, or non-obvious workflows that future humans/agents should not rediscover from chat history.
 - Before working in an area with a related log, read the relevant file in `docs/logs/`.
 - Add or update a log when the fix involved multiple failed hypotheses, external hardware/services, or NixOS-specific behavior that is likely to recur.
+- Also add a log when enabling a feature has known potential for strange, annoying, hardware-dependent side effects that future humans/agents may need to debug, even if the initial change works.
 - Do not log every small package addition, typo fix, or obvious config edit. Prefer Git history for normal change tracking.
 - Keep logs concise and factual: problem, context, root cause, fix, validation, follow-up, and useful commands.
 

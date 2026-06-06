@@ -9,7 +9,7 @@
   "modules-right": [
     "custom/mic",
     "pulseaudio",
-    "battery",
+    "custom/power",
     "custom/network",
     "tray",
     "clock",
@@ -27,10 +27,11 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format": "KW {:%V - %d.%m.%Y - %H:%M}"
   },
-  "battery": {
-    "format": "  {capacity}%",
-    "format-charging": " {capacity}%",
-    "tooltip": false
+  "custom/power": {
+    "exec": "bash ~/.config/waybar/scripts/power-profile-status.sh",
+    "return-type": "json",
+    "interval": 10,
+    "on-click": "bash ~/.config/waybar/scripts/power-profile-toggle.sh"
   },
   "custom/network": {
     "exec": "bash ~/.config/waybar/scripts/network-status.sh",

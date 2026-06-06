@@ -7,6 +7,7 @@ Current focus: Hyprland, Waybar, Ghostty, tmux, Neovim, VSCode, DBeaver, screen 
 Design preferences: reusable modules, thin host configs, simple rebuild workflow, no overengineering.
 
 Major troubleshooting writeups live in `docs/logs/`. Read related logs before re-debugging a recurring issue, and add a concise log only for significant, non-obvious fixes.
+Also document changes with known potential for strange hardware-dependent side effects, such as power-management auto-tuning, so future debugging has a starting point.
 
 ## Maintenance
 

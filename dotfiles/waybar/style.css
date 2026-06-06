@@ -63,7 +63,7 @@ Primary UI roles:
 #custom-music,
 #tray,
 #clock,
-#battery,
+#custom-power,
 #pulseaudio,
 #custom-mic,
 #custom-network,
@@ -82,16 +82,8 @@ Primary UI roles:
   margin-right: 1rem;
 }
 
-#battery {
+#custom-power {
   color: #9ece6a; /* green */
-}
-
-#battery.charging {
-  color: #73daca; /* mint green */
-}
-
-#battery.warning:not(.charging) {
-  color: #f7768e; /* red */
 }
 
 #backlight {
@@ -101,6 +93,40 @@ Primary UI roles:
 #pulseaudio {
   color: #bb9af7; /* magenta */
   margin-left: 1rem;
+}
+
+#custom-power {
+  color: #c0caf5; /* foreground */
+}
+
+#custom-power.power-saver {
+  color: #9ece6a; /* green */
+}
+
+#custom-power.balanced {
+  color: #9ece6a; /* green */
+}
+
+#custom-power.performance {
+  color: #9ece6a; /* green */
+}
+
+#custom-power.charging,
+#custom-power.plugged {
+  color: #c0caf5; /* foreground */
+}
+
+#custom-power.healthy {
+  color: #9ece6a; /* green */
+}
+
+#custom-power.warning {
+  color: #e0af68; /* yellow */
+}
+
+#custom-power.critical,
+#custom-power.unavailable {
+  color: #f7768e; /* red */
 }
 
 #custom-mic {

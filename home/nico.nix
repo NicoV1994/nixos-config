@@ -91,6 +91,8 @@ in
   xdg.configFile."waybar/scripts/memory-status.sh".source = ../dotfiles/waybar/scripts/memory-status.sh;
   xdg.configFile."waybar/scripts/mic-status.sh".source = ../dotfiles/waybar/scripts/mic-status.sh;
   xdg.configFile."waybar/scripts/network-status.sh".source = ../dotfiles/waybar/scripts/network-status.sh;
+  xdg.configFile."waybar/scripts/power-profile-status.sh".source = ../dotfiles/waybar/scripts/power-profile-status.sh;
+  xdg.configFile."waybar/scripts/power-profile-toggle.sh".source = ../dotfiles/waybar/scripts/power-profile-toggle.sh;
   xdg.configFile."waybar/scripts/system-menu.sh".source = ../dotfiles/waybar/scripts/system-menu.sh;
   xdg.configFile."waybar/scripts/vpn-menu.sh".source = ../dotfiles/waybar/scripts/vpn-menu.sh;
   xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
