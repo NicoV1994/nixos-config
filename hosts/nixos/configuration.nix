@@ -66,6 +66,9 @@
   # Container runtime
   virtualisation.docker.enable = true;
 
+  # Allow Android Studio's downloaded SDK tools to run on NixOS.
+  programs.nix-ld.enable = true;
+
   nico.dev.carenext = {
     enable = true;
     trustedInterfaces = [
@@ -79,7 +82,7 @@
   users.users.nico = {
     isNormalUser = true;
     description = "Nico";
-    extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" "kvm" ];
   };
 
   security.pam.services.gtklock = {

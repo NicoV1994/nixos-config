@@ -12,7 +12,13 @@
   outputs = { self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          android_sdk.accept_license = true;
+        };
+      };
     in
     {
       formatter.${system} = pkgs.writeShellApplication {
@@ -43,6 +49,15 @@
             home-manager.users.nico = import ./home/nico.nix;
           }
         ];
+      };
+
+      devShells.${system}.flutter-android = import ./devshells/flutter-android.nix {
+        inherit pkgs;
+      };
+
+      templates.flutter-android = {
+        path = ./templates/flutter-android;
+        description = "Flutter Android dev shell with a Nix-managed Android SDK";
       };
     };
 }

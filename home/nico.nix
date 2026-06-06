@@ -54,7 +54,15 @@ in
     gh
     just
     lazygit
+    usbutils # USB diagnostics, e.g. checking Android phones with lsusb
     wget
+
+    # Flutter / Android development
+    android-studio
+    android-tools
+    flutter
+    jdk17
+
     bitwarden-desktop
     brave
     firefox
@@ -148,6 +156,8 @@ in
     GDK_BACKEND = "wayland";
     XCURSOR_THEME = "DMZ-White";
     XCURSOR_SIZE = "24";
+    CHROME_EXECUTABLE = "${pkgs.brave}/bin/brave";
+    JAVA_HOME = "${pkgs.jdk17.home}";
   };
 
   programs.bash = {
