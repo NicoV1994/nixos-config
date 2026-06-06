@@ -1,4 +1,5 @@
-#!/usr/bin/env bash set -u
+#!/usr/bin/env bash
+set -u
 
 escape_json() {
   local value=${1//\\/\\\\}
@@ -70,6 +71,6 @@ if [ -z "$top_processes" ]; then
   top_processes="unavailable"
 fi
 
-tooltip=$(printf 'CPU: %d%%\ne----\n%s' "$usage" "$top_processes")
+tooltip=$(printf 'CPU: %d%%\n----\n%s' "$usage" "$top_processes")
 
 printf '{"text":"  %s %2d%%","tooltip":"%s"}\n' "$bars" "$usage" "$(escape_json "$tooltip")"

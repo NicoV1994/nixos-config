@@ -21,6 +21,7 @@ battery_label="--%"
 battery_status="unavailable"
 battery_class="unavailable"
 remaining_time="unavailable"
+remaining_minutes=""
 energy_rate="unavailable"
 
 if [ -n "$battery_dir" ] && [ -r "$battery_dir/capacity" ]; then
@@ -88,11 +89,40 @@ fi
 
 if [ -z "$remaining_time" ]; then
   remaining_time="unavailable"
+else
+  remaining_minutes=$(printf '%s\n' "$remaining_time" | awk '
+    {
+      value = $1
+      gsub(",", ".", value)
+
+      if ($2 ~ /^hour/) {
+        printf "%d", value * 60
+      } else if ($2 ~ /^minute/) {
+        printf "%d", value
+      }
+    }
+  ')
 fi
 
 if [ -z "$energy_rate" ]; then
   energy_rate="unavailable"
 fi
+
+case "$battery_status" in
+  Charging|Full|"Not charging")
+    ;;
+  *)
+    if [ -n "$remaining_minutes" ]; then
+      if [ "$remaining_minutes" -le 10 ]; then
+        battery_class="critical"
+      elif [ "$remaining_minutes" -le 40 ]; then
+        battery_class="warning"
+      else
+        battery_class="healthy"
+      fi
+    fi
+    ;;
+esac
 
 profile="unavailable"
 profiles="unavailable"

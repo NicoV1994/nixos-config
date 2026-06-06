@@ -81,7 +81,7 @@
     enable = true;
     trustedInterfaces = [
       "docker0"
-      # Current Docker Compose bridge for /home/nico/Haggla/Milon/milon-care-next.
+      # Docker Compose bridge for the Milon db stack in /home/nico/Haggla/Milon/milon-care-next.
       "br-f078f06683cb"
     ];
   };
