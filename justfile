@@ -53,6 +53,7 @@ help:
     @printf '%s\n' "More docs:"
     @printf '%s\n' "  docs/flutter-android.md"
     @printf '%s\n' "  docs/maintenance.md"
+    @printf '%s\n' "  docs/logs/"
 
 check:
     @printf 'Running flake check...\n'
@@ -101,4 +102,4 @@ agent-context:
     @printf '\n== .agent/context.md ==\n'
     @cat .agent/context.md
     @printf '\n== Relevant files ==\n'
-    @printf '%s\n' flake.nix hosts/nixos/configuration.nix home/nico.nix dotfiles/ docs/decisions/
+    @printf '%s\n' flake.nix hosts/nixos/configuration.nix home/nico.nix dotfiles/ docs/decisions/ docs/logs/

@@ -13,10 +13,18 @@ Keep changes small, explicit, and easy to review. Prefer plain Markdown document
 - `dotfiles/`: app configs managed declaratively, such as Hyprland, Waybar, Neovim, Ghostty, and tmux.
 - `assets/`: static assets such as wallpapers.
 - `docs/decisions/`: short decision notes for meaningful structural changes.
+- `docs/logs/`: concise troubleshooting and learning notes for significant issues.
 - `.agent/context.md`: curated repo memory for humans and AI coding agents.
 - `bootstrap-example.nix`: minimal bootstrap config for first install.
 
 Keep host-specific details in `hosts/<host>/`. Keep reusable logic in `modules/` only when it is actually shared or likely to be shared.
+
+## Learning Logs
+- Use `docs/logs/` for significant debugging sessions, recurring issues, or non-obvious workflows that future humans/agents should not rediscover from chat history.
+- Before working in an area with a related log, read the relevant file in `docs/logs/`.
+- Add or update a log when the fix involved multiple failed hypotheses, external hardware/services, or NixOS-specific behavior that is likely to recur.
+- Do not log every small package addition, typo fix, or obvious config edit. Prefer Git history for normal change tracking.
+- Keep logs concise and factual: problem, context, root cause, fix, validation, follow-up, and useful commands.
 
 ## Safe Commands
 Run commands from the repository root.

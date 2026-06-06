@@ -77,6 +77,8 @@ Agents should follow `AGENTS.md`: they may run validation commands, but must nev
 
 See `TASKS.md` for active work, shaped task briefs, and backlog items.
 
+See `docs/logs/` for major troubleshooting notes and reusable lessons that should not live only in chat history.
+
 ---
 
 ## Tools Used
@@ -115,5 +117,6 @@ nixos-config/
 ├── home/nico.nix               # User-level config
 ├── dotfiles/                   # Dotfiles for Hyprland, Waybar, etc.
 ├── docs/decisions/             # Structural decision notes
+├── docs/logs/                  # Troubleshooting notes and reusable lessons
 └── README.md
 ```

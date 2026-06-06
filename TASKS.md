@@ -4,33 +4,7 @@ This file tracks not-done work for this NixOS config. Tasks are written as small
 
 ## Active / Not Done
 
-### Repository Learning Log And AI Capability
-Status: Next
-Appetite: Medium
-
-Problem:
-When we solve bigger problems in this repo, the reasoning and fix can disappear into chat history. Later, humans and AI agents have to rediscover the same context.
-
-Solution:
-Add a lightweight log system for major problems and decisions. Use it for significant issues only, not every tiny change. Link the practice from `AGENTS.md` so future AI agents know to read and update it when useful.
-
-Look And Feel:
-Logs should be concise and searchable. Each entry should explain what broke, why it happened, what fixed it, and any follow-up. Prefer plain Markdown in a predictable folder, for example `docs/logs/`.
-
-Done When:
-- A log folder exists with a template or first entry.
-- `AGENTS.md` tells AI agents when to read/write logs.
-- The README or task file points to the logs.
-- The process is clear enough to use without extra explanation.
-
-Validation:
-- Create one sample log entry from a real repo issue.
-- Confirm an agent can find the instructions from `AGENTS.md`.
-- Confirm the log format is easy to skim.
-
-Open Questions:
-- Decide whether logs should be in `docs/logs/` or another root folder.
-- Decide the threshold for writing a log entry.
+No active task is selected. Promote one item from the betting table when ready.
 
 ## Betting Table
 
