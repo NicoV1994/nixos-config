@@ -8,71 +8,29 @@ No active task is selected. Promote one item from the betting table when ready.
 
 ## Betting Table
 
-### Install PewDiePie Odysseus
-Status: Paused
+### Fix Waybar CPU Tooltip Over 100 Percent
+Status: Raw
 Appetite: Small
 
 Problem:
-I want PewDiePie Odysseus installed on this setup.
-
-Current State:
-There is separate branch work for Odysseus, but it is too experimental to continue on `main` right now.
-
-Solution:
-Do not proceed until the exact upstream project/app and installation strategy are clearer. If resumed, prefer a reproducible Nix package over a manual install.
-
-Look And Feel:
-The app should launch from the desktop/app launcher like other installed applications.
+The Waybar CPU tooltip can show Brave using more than `100%` CPU, which is confusing and may be caused by how per-process CPU usage is aggregated or reported across cores.
 
 Done When:
-- The correct app/project is identified.
-- It is installed declaratively if a Nix package or reliable source exists.
-- It can be launched after `nixos-rebuild switch`.
+- The tooltip explains CPU usage correctly.
+- Browser/process CPU values no longer look impossible without context.
+- The fix is validated by hovering the CPU module while Brave is active.
 
-Validation:
-- Apply the config.
-- Launch the app from terminal or app launcher.
-- Confirm it starts successfully.
-
-Open Questions:
-- Clarify the exact upstream project/app name and source URL.
-- Check whether this exists in nixpkgs, Flathub, AppImage, or another trustworthy source.
-- Decide whether to keep experimenting on the separate branch or drop it.
-
-### Offline Local LLM For OpenCode
-Status: Paused
-Appetite: Medium
+### Fix Waybar Battery Color Classes
+Status: Raw
+Appetite: Small
 
 Problem:
-I want to use OpenCode while offline by running the strongest local model that the laptop can realistically handle.
-
-Solution:
-Investigate local LLM runtimes and model choices for the laptop hardware. Prefer a setup that can be installed declaratively through NixOS/Home Manager and exposed to OpenCode as a local OpenAI-compatible endpoint if possible.
-
-Current State:
-Local LLM work is present/running on an experimental branch, but it is not usable enough right now and is not a priority.
-
-Look And Feel:
-The workflow should be simple: start the local model service, point OpenCode at it, and keep working without internet. It should choose quality first within the laptop's RAM/VRAM/CPU limits, but remain usable enough for coding tasks.
+The Waybar battery/power icon color does not change as expected when battery status, charge level, or power profile changes.
 
 Done When:
-- The laptop hardware limits are identified, including RAM, GPU/VRAM if available, and CPU.
-- A local runtime is chosen, such as Ollama, llama.cpp, LM Studio, or another OpenAI-compatible server.
-- One or more candidate coding models are tested locally.
-- OpenCode can use the local model endpoint while offline.
-- The chosen setup is documented with start/use commands.
-
-Validation:
-- Disconnect from the network.
-- Start the local model runtime.
-- Run OpenCode against the local endpoint.
-- Ask it to inspect or edit a small repo task.
-- Confirm response speed and quality are acceptable.
-
-Open Questions:
-- Which laptop should this target?
-- Should the runtime be declarative in NixOS, or is a manually managed app acceptable for first testing?
-- Should the priority be best coding quality, fastest usable response, or lowest battery usage?
+- Battery warning/critical/charging/profile classes produce visible color changes.
+- The generated JSON class names match the CSS selectors in `dotfiles/waybar/style.css`.
+- The fix is validated by checking Waybar output and hovering/cycling the power module.
 
 ### Improve Neovim File Navigation
 Status: Shaped

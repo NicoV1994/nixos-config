@@ -57,11 +57,8 @@ in
     usbutils # USB diagnostics, e.g. checking Android phones with lsusb
     wget
 
-    # Flutter / Android development
+    # Flutter / Android development. Terminal builds use devshells/flutter-android.nix.
     android-studio
-    android-tools
-    flutter
-    jdk17
 
     bitwarden-desktop
     brave
@@ -172,7 +169,6 @@ in
     XCURSOR_THEME = "DMZ-White";
     XCURSOR_SIZE = "24";
     CHROME_EXECUTABLE = "${pkgs.brave}/bin/brave";
-    JAVA_HOME = "${pkgs.jdk17.home}";
   };
 
   programs.bash = {

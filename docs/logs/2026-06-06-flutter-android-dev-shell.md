@@ -33,7 +33,6 @@ Added a reproducible Flutter Android dev shell:
 
 - `devshells/flutter-android.nix`
 - `devShells.x86_64-linux.flutter-android`
-- Template in `templates/flutter-android/`
 - Documentation in `docs/flutter-android.md`
 
 The shell uses `androidenv.composeAndroidPackages` and explicitly provides:
@@ -49,6 +48,8 @@ The shell uses `androidenv.composeAndroidPackages` and explicitly provides:
 The shell sets Android environment variables and prepends Nix SDK tools to `PATH`, so `which adb` resolves into the Nix store.
 
 Global Android Studio and `nix-ld` remain available for pragmatic IDE/proprietary-tool support, but the dev shell is the source of truth for terminal builds.
+
+The earlier project-local template was removed later because the two current Milon Flutter apps can share this repo's dev shell directly.
 
 ## Validation
 

@@ -54,10 +54,5 @@
       devShells.${system}.flutter-android = import ./devshells/flutter-android.nix {
         inherit pkgs;
       };
-
-      templates.flutter-android = {
-        path = ./templates/flutter-android;
-        description = "Flutter Android dev shell with a Nix-managed Android SDK";
-      };
     };
 }

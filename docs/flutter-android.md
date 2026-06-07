@@ -35,12 +35,6 @@ It includes Android SDK platforms 34, 35, and 36, CMake `3.22.1`, and NDK `28.2.
 
 Android Studio remains useful as an IDE, but terminal builds should use the Nix shell as the source of truth.
 
-To create a project-local starter flake later:
-
-```bash
-nix flake init -t /home/nico/nixos-config#flutter-android
-```
-
 ## Real Phone Workflow
 
 Prefer a real Android phone on this HP pilot laptop because the emulator is slow/flaky on this hardware.
