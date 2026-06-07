@@ -62,7 +62,7 @@ in
 
     bitwarden-desktop
     brave
-    firefox
+    librewolf
     proton-vpn
     teams-for-linux
     vscode-fhs
@@ -121,6 +121,23 @@ in
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  # Keep Firefox as the dedicated streaming browser. Brave stays the work browser,
+  # while LibreWolf is installed separately for privacy-focused browsing.
+  programs.firefox = {
+    enable = true;
+    configPath = ".mozilla/firefox";
+    policies = {
+      Preferences."media.eme.enabled" = {
+        Value = true;
+        Status = "default";
+      };
+      ExtensionSettings."uBlock0@raymondhill.net" = {
+        installation_mode = "normal_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+      };
+    };
   };
 
   # GTK + Theme settings (Tokyo Night/dark)
