@@ -1,10 +1,14 @@
 # Agent Context
 
-This repo manages my reusable NixOS laptop/desktop setup.
+This repo manages my finished reusable NixOS laptop/desktop setup for a daily workstation.
 
-Current focus: Hyprland, Waybar, Ghostty, tmux, Neovim, VSCode, DBeaver, screen locking, i3-like shortcuts, and AI-agent-friendly maintenance.
+Priorities: developer environment first, privacy-conscious OS setup second, fun and entertainment support third.
 
-Design preferences: reusable modules, thin host configs, simple rebuild workflow, no overengineering.
+Current baseline: Hyprland, Waybar, Ghostty, tmux, Neovim, VSCode, DBeaver, screen locking, i3-like shortcuts, integrated Home Manager, and AI-agent-friendly maintenance.
+
+Browser split: Brave is the work/development browser, LibreWolf is the privacy-focused browser, and Firefox is the entertainment/streaming browser with DRM isolated there plus uBlock Origin.
+
+Design preferences: rapidly editable, robust, reproducible, low-bloat, reusable modules only when useful, thin host configs, simple rebuild workflow, no overengineering.
 
 Major troubleshooting writeups live in `docs/logs/`. Read related logs before re-debugging a recurring issue, and add a concise log only for significant, non-obvious fixes.
 Also document changes with known potential for strange hardware-dependent side effects, such as power-management auto-tuning, so future debugging has a starting point.

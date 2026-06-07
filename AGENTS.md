@@ -1,9 +1,22 @@
 # Repository Guidelines
 
 ## Purpose
-This is a personal NixOS desktop/laptop flake repository. It manages the system configuration, integrated Home Manager setup, and user dotfiles for a reusable Wayland desktop environment.
+This is a finished personal NixOS laptop/desktop flake for a daily workstation. It manages the system configuration, integrated Home Manager setup, and user dotfiles for a reusable Wayland desktop environment.
 
-Keep changes small, explicit, and easy to review. Prefer plain Markdown documentation and Git history over custom tooling.
+The repo priorities are:
+
+- Developer environment first.
+- Privacy-conscious OS setup second.
+- Fun and entertainment support third.
+
+Keep changes small, explicit, and easy to review. Prefer plain Markdown documentation and Git history over custom tooling. The setup should stay rapidly editable, robust, reproducible, accessible to agents, understandable to humans, and free of unnecessary bloat.
+
+## Operating Priorities
+- Preserve development workflows and reproducibility before convenience tweaks.
+- Isolate privacy tradeoffs. Proprietary, tracking-heavy, or entertainment-specific features should be scoped to the apps/profiles that need them.
+- Keep entertainment support practical, but do not let it pollute work or privacy defaults.
+- Treat the current configuration as a working baseline. Prefer incremental improvements over broad redesigns unless the user explicitly requests a restructure.
+- Avoid adding helper scripts, modules, services, package sets, or docs processes unless they clearly reduce complexity or improve reproducibility.
 
 ## Intended Layout
 - `flake.nix` / `flake.lock`: flake entrypoint and pinned inputs.
