@@ -40,6 +40,12 @@ Keep host-specific details in `hosts/<host>/`. Keep reusable logic in `modules/`
 - Do not log every small package addition, typo fix, or obvious config edit. Prefer Git history for normal change tracking.
 - Keep logs concise and factual: problem, context, root cause, fix, validation, follow-up, and useful commands.
 
+## Task Workflow
+- Check `TASKS.md` for active work and betting-table items before starting broad, ambiguous, or backlog-style work.
+- When a user asks to work on a known backlog item, use the matching `TASKS.md` brief and any linked source-of-truth docs before editing.
+- Keep detailed backlog notes in focused docs linked from `TASKS.md`, rather than expanding `.agent/context.md` into a long manual.
+- For privacy or security changes, check `docs/privacy-hardening-todo.md` and preserve documented developer workflow tradeoffs unless the user explicitly asks to change them.
+
 ## Safe Commands
 Run commands from the repository root.
 

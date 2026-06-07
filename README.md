@@ -117,6 +117,7 @@ Private keys should not be committed to this repo. Keep SSH keys in `~/.ssh` or 
 nixos-config/
 ├── flake.nix                   # Main entry point
 ├── justfile                    # Stable command interface
+├── TASKS.md                    # Active work, shaped task briefs, and backlog
 ├── AGENTS.md                   # Coding-agent instructions and guardrails
 ├── .agent/context.md           # Curated repo memory
 ├── bootstrap-example.nix       # Minimal first-install config
@@ -127,6 +128,8 @@ nixos-config/
 ├── dotfiles/                   # Dotfiles for Hyprland, Waybar, Ghostty, etc.
 ├── docs/decisions/             # Structural decision notes
 ├── docs/logs/                  # Troubleshooting notes and reusable lessons
+├── docs/maintenance.md         # Generation cleanup and maintenance notes
+├── docs/privacy-hardening-todo.md # Privacy hardening backlog
 └── README.md
 ```
 

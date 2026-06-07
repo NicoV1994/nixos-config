@@ -8,6 +8,21 @@ No active task is selected. Promote one item from the betting table when ready.
 
 ## Betting Table
 
+### Privacy-Harden HP Laptop Baseline
+Status: Shaped
+Appetite: Medium
+
+Problem:
+The HP ProBook 430 G5 config only partially implements the privacy-hardening baseline. Remaining work includes Bluetooth off-at-boot, explicit firewall config, TPM userspace support, encrypted DNS, Tor Browser, radio/camera controls, AppArmor/Firejail, USBGuard evaluation, disk encryption planning, and Secure Boot planning.
+
+Source Of Truth:
+- See `docs/privacy-hardening-todo.md` for the full audit result, platform facts, staged checklist, and tradeoffs.
+
+Done When:
+- Quick wins from `docs/privacy-hardening-todo.md` are implemented and validated with `just check` or a more appropriate targeted command.
+- Medium-effort items are either implemented one at a time or explicitly left as follow-up tasks.
+- Advanced boot-chain and disk-encryption work remains split into separate tasks before implementation.
+
 ### Fix Waybar CPU Tooltip Over 100 Percent
 Status: Raw
 Appetite: Small

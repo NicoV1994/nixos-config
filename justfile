@@ -101,5 +101,9 @@ agent-context:
     @cat AGENTS.md
     @printf '\n== .agent/context.md ==\n'
     @cat .agent/context.md
+    @printf '\n== TASKS.md ==\n'
+    @cat TASKS.md
+    @printf '\n== Privacy hardening todo ==\n'
+    @cat docs/privacy-hardening-todo.md
     @printf '\n== Relevant files ==\n'
-    @printf '%s\n' flake.nix hosts/nixos/configuration.nix home/nico.nix dotfiles/ docs/decisions/ docs/logs/
+    @printf '%s\n' flake.nix hosts/nixos/configuration.nix home/nico.nix dotfiles/ docs/decisions/ docs/logs/ docs/maintenance.md

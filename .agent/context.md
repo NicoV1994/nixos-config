@@ -13,6 +13,11 @@ Design preferences: rapidly editable, robust, reproducible, low-bloat, reusable 
 Major troubleshooting writeups live in `docs/logs/`. Read related logs before re-debugging a recurring issue, and add a concise log only for significant, non-obvious fixes.
 Also document changes with known potential for strange hardware-dependent side effects, such as power-management auto-tuning, so future debugging has a starting point.
 
+## Current Backlog
+
+- Check `TASKS.md` for active work, shaped task briefs, and betting-table items before starting broad or ambiguous tasks.
+- Privacy-hardening follow-up work is tracked in `docs/privacy-hardening-todo.md`; preserve documented developer workflow tradeoffs when changing security/privacy settings.
+
 ## Maintenance
 
 - Generation cleanup is human-only because it uses `sudo` and removes rollback points.
