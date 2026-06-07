@@ -28,7 +28,8 @@ in
     networkmanagerapplet
     vanilla-dmz #cursor
     wofi #d-menu
-    thunar #file explorere
+    yazi #tui file explorer
+    thunar #file explorer
     hyprpaper #background image
     gtklock #lockscreen
     wl-clipboard #clipboard
