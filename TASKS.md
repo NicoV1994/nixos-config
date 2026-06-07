@@ -23,6 +23,32 @@ Done When:
 - Medium-effort items are either implemented one at a time or explicitly left as follow-up tasks.
 - Advanced boot-chain and disk-encryption work remains split into separate tasks before implementation.
 
+### Add Practical TUI/CLI Dev Tools
+Status: Shaped
+Appetite: Small
+
+Problem:
+The workstation has core terminal tools like `tmux`, `yazi`, `lazygit`, and `ripgrep`, plus `direnv`/`nix-direnv`, but it is missing several small, practical CLI tools that would improve daily navigation, fuzzy finding, disk/system inspection, shell history, and backend/API workflows.
+
+Solution:
+Add a focused set of terminal tools through Home Manager where possible. Prioritize `fd`, `fzf`, `zoxide`, `btop`, `jq`, `bat`, `eza`, and `dua`. Evaluate lower-priority additions while implementing: `starship`, `atuin`, `duf`, and `yq`. Keep Atuin local-only if added.
+
+Non-Goals:
+- Do not replace `tmux`.
+- Do not replace `yazi`.
+- Do not replace `lazygit`.
+- Do not enable Atuin cloud sync.
+- Do not add a large shell framework.
+- Do not globally replace classic commands with aliases unless explicitly chosen later.
+
+Done When:
+- Required tools are available in the shell: `fd`, `fzf`, `zoxide`, `btop`, `jq`, `bat`, `eza`, and `dua`.
+- Existing tools remain available and untouched: `tmux`, `yazi`, `lazygit`, `ripgrep`, `direnv`, and `nix-direnv`.
+- `zoxide` and `fzf` are integrated into Bash through Home Manager.
+- If `atuin` is added, sync is disabled.
+- If `starship` is added, it provides useful prompt context without introducing a larger shell framework.
+- The config validates with `just check` or a more appropriate Nix validation command.
+
 ### Fix Waybar CPU Tooltip Over 100 Percent
 Status: Raw
 Appetite: Small
