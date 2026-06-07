@@ -1,79 +1,92 @@
-{
-  "layer": "top",
-  "position": "top",
-  "modules-left": [
-    "custom/cpu",
-    "custom/memory",
-  ],
-  "modules-center": ["hyprland/workspaces"],
-  "modules-right": [
-    "custom/mic",
-    "pulseaudio",
-    "custom/power",
-    "custom/network",
-    "tray",
-    "clock",
-    "custom/system-menu",
-  ],
-  "hyprland/workspaces": {
-    "format": "{name}: {icon}",
-    "format-icons": {
-      "active": "",
-      "default": ""
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "name": "main",
+    "on-sigusr1": "noop",
+    "modules-left": [
+      "custom/cpu",
+      "custom/memory",
+    ],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": [
+      "custom/mic",
+      "pulseaudio",
+      "custom/power",
+      "custom/network",
+      "clock",
+      "custom/system-menu",
+    ],
+    "hyprland/workspaces": {
+      "format": "{name}: {icon}",
+      "format-icons": {
+        "active": "",
+        "default": ""
+      }
+    },
+    "clock": {
+      "timezone": "Europe/Vienna",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "format": "KW {:%V - %d.%m.%Y - %H:%M}"
+    },
+    "custom/power": {
+      "exec": "bash ~/.config/waybar/scripts/power-profile-status.sh",
+      "return-type": "json",
+      "interval": 10,
+      "on-click": "bash ~/.config/waybar/scripts/power-profile-toggle.sh"
+    },
+    "custom/network": {
+      "exec": "bash ~/.config/waybar/scripts/network-status.sh",
+      "return-type": "json",
+      "interval": 5,
+      "on-click": "bash ~/.config/waybar/scripts/vpn-menu.sh"
+    },
+    "custom/system-menu": {
+      "format": "",
+      "tooltip": false,
+      "on-click": "pkill -SIGUSR1 waybar",
+      "on-click-right": "bash ~/.config/waybar/scripts/system-menu.sh"
+    },
+    "custom/cpu": {
+      "exec": "bash ~/.config/waybar/scripts/cpu-status.sh",
+      "return-type": "json",
+      "interval": 1
+    },
+    "custom/memory": {
+      "exec": "bash ~/.config/waybar/scripts/memory-status.sh",
+      "return-type": "json",
+      "interval": 5
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "",
+      "format-icons": {
+        "default": ["", "", " "]
+      },
+      "on-click": "pavucontrol"
+    },
+    "custom/mic": {
+      "exec": "bash ~/.config/waybar/scripts/mic-status.sh",
+      "return-type": "json",
+      "interval": 2,
+      "on-click": "pavucontrol",
+      "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    },
+    "later": {
+      "format": "<span class='icon'>{icon}</span> <span class='text'>{text}</span>"
     }
   },
-  "clock": {
-    "timezone": "Europe/Vienna",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "KW {:%V - %d.%m.%Y - %H:%M}"
-  },
-  "custom/power": {
-    "exec": "bash ~/.config/waybar/scripts/power-profile-status.sh",
-    "return-type": "json",
-    "interval": 10,
-    "on-click": "bash ~/.config/waybar/scripts/power-profile-toggle.sh"
-  },
-  "custom/network": {
-    "exec": "bash ~/.config/waybar/scripts/network-status.sh",
-    "return-type": "json",
-    "interval": 5,
-    "on-click": "bash ~/.config/waybar/scripts/vpn-menu.sh"
-  },
-  "tray": {
-    "icon-size": 18,
-    "spacing": 8
-  },
-  "custom/system-menu": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "bash ~/.config/waybar/scripts/system-menu.sh"
-  },
-  "custom/cpu": {
-    "exec": "bash ~/.config/waybar/scripts/cpu-status.sh",
-    "return-type": "json",
-    "interval": 1
-  },
-  "custom/memory": {
-    "exec": "bash ~/.config/waybar/scripts/memory-status.sh",
-    "return-type": "json",
-    "interval": 5
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", " "]
-    },
-    "on-click": "pavucontrol"
-  },
-  "custom/mic": {
-    "exec": "bash ~/.config/waybar/scripts/mic-status.sh",
-    "return-type": "json",
-    "interval": 2,
-    "on-click": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-  },
-  "later": {
-    "format": "<span class='icon'>{icon}</span> <span class='text'>{text}</span>"
+  {
+    "layer": "top",
+    "position": "top",
+    "name": "tray-row",
+    "start_hidden": true,
+    "exclusive": false,
+    "on-sigusr1": "toggle",
+    "modules-right": ["tray"],
+    "tray": {
+      "icon-size": 18,
+      "spacing": 8
+    }
   }
-}
+]
