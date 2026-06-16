@@ -47,6 +47,8 @@ in
     ripgrep #for fuzzy finding (leader s g)
     codex #OpenAI coding agent CLI
     opencode #OpenCode coding agent CLI
+    claude-code #Anthropic coding agent CLI
+    aider-chat #Aider coding agent CLI
     unzip
     nodejs_22
 
@@ -57,6 +59,8 @@ in
     lazygit
     usbutils # USB diagnostics, e.g. checking Android phones with lsusb
     wget
+    qalculate-qt
+    libreoffice
 
     # Flutter / Android development. Terminal builds use devshells/flutter-android.nix.
     android-studio
@@ -95,6 +99,7 @@ in
   xdg.configFile."waybar/scripts/vpn-menu.sh".source = ../dotfiles/waybar/scripts/vpn-menu.sh;
   xdg.configFile."nvim/init.lua".source = ../dotfiles/nvim/init.lua;
   xdg.configFile."ghostty/config".source = ../dotfiles/ghostty/config;
+  xdg.configFile."opencode/opencode.json".source = ../dotfiles/opencode/opencode.json;
   home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;
 
   xdg.configFile."autostart/proton-vpn.desktop".text = ''
