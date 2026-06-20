@@ -41,6 +41,9 @@
         inherit system;
         specialArgs = { inherit system; };
         modules = [
+          {
+            system.configurationRevision = self.rev or self.dirtyRev or null;
+          }
           ./hosts/nixos/configuration.nix
           home-manager.nixosModules.home-manager
           {
