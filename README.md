@@ -107,7 +107,7 @@ Agents should follow `AGENTS.md`: they may run validation commands, but must nev
 
 For a different laptop, do not reuse `hosts/nixos/hardware-configuration.nix`; it contains disk UUIDs and hardware details for the current machine. Generate a fresh hardware config on the target laptop, then add a new host directory such as `hosts/framework/` and a matching `nixosConfigurations.framework` output when the hardware is known.
 
-Work-specific networking lives behind `nico.dev.carenext.enable`. Keep it disabled for hosts that do not need those local dev hostnames or trusted Docker interfaces.
+Milon-specific host integration lives behind `nico.dev.milon.enable`. Keep `nico.dev.milon.carenext.enable` disabled for hosts that do not need those local dev hostnames or trusted Docker interfaces, and keep `nico.dev.milon.flutter.enable` disabled for hosts that do not need Android/Flutter workstation tooling. See `docs/milon-development.md` for the project-repo versus personal-machine split.
 
 Private keys should not be committed to this repo. Keep SSH keys in `~/.ssh` or manage them with a secret-management tool before using this repo on more machines.
 

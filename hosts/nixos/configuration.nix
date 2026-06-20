@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./dev/carenext.nix
+    ./dev/milon.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -74,16 +74,17 @@
   # Container runtime
   virtualisation.docker.enable = true;
 
-  # Allow Android Studio's downloaded SDK tools to run on NixOS.
-  programs.nix-ld.enable = true;
-
-  nico.dev.carenext = {
+  nico.dev.milon = {
     enable = true;
-    trustedInterfaces = [
-      "docker0"
-      # Docker Compose bridge for the Milon db stack in /home/nico/Haggla/Milon/milon-care-next.
-      "br-f078f06683cb"
-    ];
+    carenext = {
+      enable = true;
+      trustedInterfaces = [
+        "docker0"
+        # Stable Docker Compose bridge for the Milon CareNext local stack.
+        "br-carenext"
+      ];
+    };
+    flutter.enable = true;
   };
 
   # Your user (Home Manager will manage packages)

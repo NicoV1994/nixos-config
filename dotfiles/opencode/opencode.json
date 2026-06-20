@@ -1,7 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "lmstudio/qwen/qwen2.5-coder-14b",
-  "small_model": "lmstudio/qwen/qwen2.5-coder-14b",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",

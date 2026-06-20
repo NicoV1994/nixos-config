@@ -27,6 +27,9 @@ Also document changes with known potential for strange hardware-dependent side e
 
 ## Flutter Android Development
 
+- Milon development is documented in `docs/milon-development.md`: project repos own runtime config, this NixOS repo owns local host/firewall/toolchain integration.
+- The local Milon host profile lives under `nico.dev.milon`; CareNext networking is under `nico.dev.milon.carenext` and trusts the stable `br-carenext` Docker bridge.
+- Milon Flutter workstation integration is under `nico.dev.milon.flutter`; it controls host-level Android tooling such as Android Studio and `nix-ld`, while `#flutter-android` remains the reusable terminal dev shell.
 - Use the reusable Nix dev shell for Flutter/Android work: `nix develop /home/nico/nixos-config#flutter-android`.
 - The shell owns the Android SDK via `androidenv.composeAndroidPackages`; terminal builds should not rely on Android Studio's mutable `/home/nico/Android/Sdk`.
 - Inside the shell, `which adb` must resolve to a Nix store Android SDK path, not `/home/nico/Android/Sdk/platform-tools/adb`.

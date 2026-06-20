@@ -1,7 +1,11 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, osConfig ? null, ... }:
 
 let
   wallpaper = ../assets/wallpapers/pawel-czerwinski.jpg;
+  milonFlutterEnabled =
+    osConfig != null
+    && osConfig.nico.dev.milon.enable
+    && osConfig.nico.dev.milon.flutter.enable;
 in
 
 {
@@ -11,7 +15,7 @@ in
   programs.home-manager.enable = true;
 
   # Let Home Manager install and manage these apps:
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     direnv #for automatic context switching with nixos
     nix-direnv #for nix to understand direnv
 
@@ -62,9 +66,6 @@ in
     qalculate-qt
     libreoffice
 
-    # Flutter / Android development. Terminal builds use devshells/flutter-android.nix.
-    android-studio
-
     bitwarden-desktop
     brave
     librewolf
@@ -79,7 +80,10 @@ in
     # Qt theming tools
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
-  ];
+  ]) ++ lib.optionals milonFlutterEnabled (with pkgs; [
+    # Flutter / Android development. Terminal builds use devshells/flutter-android.nix.
+    android-studio
+  ]);
 
   # Link config files from your repo
   xdg.configFile."hypr/hyprland.conf".text =
