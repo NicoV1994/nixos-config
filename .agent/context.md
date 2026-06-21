@@ -23,6 +23,7 @@ Also document changes with known potential for strange hardware-dependent side e
 - Generation cleanup is human-only because it uses `sudo` and removes rollback points.
 - Default cleanup policy: keep the latest 5 system generations with `just clean-generations` after confirming the current generation works.
 - Agents may document or suggest cleanup commands but must not run `sudo nix-env --delete-generations`, `sudo nix store gc`, or `just clean-generations`.
+- Use `just doctor` for a fast agent-readiness snapshot; use `just validate` when flake evaluation and the system build need to be proven.
 - Prefer targeted validation over broad checks when safe. For example, use shell syntax/output checks for script edits and skip `just check` for purely cosmetic CSS color changes unless Nix wiring or evaluation could be affected.
 
 ## Flutter Android Development

@@ -16,6 +16,7 @@ help:
     @printf '%s\n' ""
     @printf '%s\n' "Daily workflow:"
     @printf '%s\n' "  just status      Show changed files"
+    @printf '%s\n' "  just doctor      Fast repo/system readiness report"
     @printf '%s\n' "  just check       Validate flake evaluation"
     @printf '%s\n' "  just build       Build system without activating"
     @printf '%s\n' "  just preflight   Format, check, and build before switching"
@@ -23,6 +24,7 @@ help:
     @printf '%s\n' ""
     @printf '%s\n' "Safe read-only commands:"
     @printf '%s\n' "  just status"
+    @printf '%s\n' "  just doctor"
     @printf '%s\n' "  just check"
     @printf '%s\n' "  just build"
     @printf '%s\n' "  just validate"
@@ -73,6 +75,61 @@ build:
 validate: check build
 
 preflight: fmt check build
+
+doctor:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    ready=yes
+    repo_head="$(git rev-parse HEAD)"
+    running_revision="$(nixos-version --configuration-revision 2>/dev/null || true)"
+
+    printf '%s\n' "Nico's NixOS Config Doctor"
+    printf '%s\n' ""
+
+    printf '%s\n' "Git:"
+    git status --short --branch
+    if [ -n "$(git status --short)" ]; then
+      ready=no
+      printf '%s\n' "  worktree: dirty"
+    else
+      printf '%s\n' "  worktree: clean"
+    fi
+    printf '%s\n' ""
+
+    printf '%s\n' "NixOS:"
+    printf '  repo HEAD: %s\n' "$repo_head"
+    if [ -n "$running_revision" ]; then
+      printf '  running configurationRevision: %s\n' "$running_revision"
+      if [ "$running_revision" = "$repo_head" ]; then
+        printf '%s\n' "  revision match: yes"
+      else
+        ready=no
+        printf '%s\n' "  revision match: no"
+      fi
+    else
+      ready=no
+      printf '%s\n' "  running configurationRevision: unavailable"
+    fi
+    printf '%s\n' ""
+
+    printf '%s\n' "Agent docs:"
+    for file in AGENTS.md CLAUDE.md .agent/context.md TASKS.md; do
+      if [ -f "$file" ]; then
+        printf '  ok: %s\n' "$file"
+      else
+        ready=no
+        printf '  missing: %s\n' "$file"
+      fi
+    done
+    printf '%s\n' ""
+
+    if [ "$ready" = yes ]; then
+      printf '%s\n' "Agent-ready: yes"
+    else
+      printf '%s\n' "Agent-ready: needs review"
+    fi
+    printf '%s\n' "Run 'just validate' for full flake/build validation."
 
 dry:
     sudo nixos-rebuild dry-build --flake .#{{host}}

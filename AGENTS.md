@@ -53,6 +53,7 @@ Read-only safe commands:
 
 - `just status`: show concise Git status.
 - `just agent-context`: print agent instructions, curated context, and relevant repo files.
+- `just doctor`: print a fast repo/system readiness report without formatting, builds, activation, or sudo.
 - `just check`: run `nix flake check`.
 - `just build`: build the system closure without activating it or creating a `result` symlink.
 - `just validate`: run read-only validation without formatting.
@@ -69,6 +70,7 @@ Agents may run these commands without asking:
 
 - `just status`
 - `just agent-context`
+- `just doctor`
 - `just check`
 - `just build`
 - `just validate`
@@ -125,6 +127,7 @@ Agents may only run these after explicit user approval:
 
 ## Validation
 - Minimum safe check for most changes: `just check` or `nix flake check`.
+- Use `just doctor` for a fast read-only readiness snapshot when deciding whether the repo and running system are aligned before deeper work.
 - Use targeted validation when it is sufficient: shell syntax/output checks for script edits, formatter checks for formatting-sensitive changes, and app restarts for desktop dotfiles.
 - Do not run `just check` for obviously safe cosmetic-only edits such as CSS color changes unless there is a concrete risk that Nix evaluation or file wiring changed.
 - For read-only review, use `just validate`.
